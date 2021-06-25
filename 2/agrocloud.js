@@ -2,12 +2,16 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+let ejs = require('ejs');
+app.use(express.static('./'));
+app.engine('.html', require('ejs').__express);
+app.set('view engine', 'html');
+app.set('views',__dirname+'/');
 
-
-app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('index')
+res.render('index.html')
+
 })
 
 app.listen(port, () => {
