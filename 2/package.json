@@ -1,0 +1,11 @@
+{
+  "name": "agrocloud",
+  "version": "1.0.0",
+  "description": "platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "agrocloud",
+  "license": "ISC"
+}
