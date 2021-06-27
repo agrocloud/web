@@ -9,6 +9,7 @@
   "author": "agrocloud",
   "license": "ISC",
   "dependencies": {
+    "canvas-gauges": "^2.1.7-linear",
     "ejs": "^3.1.6"
   }
 }
