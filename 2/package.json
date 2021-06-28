@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "canvas-gauges": "^2.1.7-linear",
+    "chart.js": "^3.4.0",
     "ejs": "^3.1.6"
   }
 }
