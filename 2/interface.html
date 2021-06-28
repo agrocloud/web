@@ -130,108 +130,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<div class="banner-1">
 
-
-
-
-
-
-<!--
-
-<canvas data-type="radial-gauge"
-
-    data-width="300"
-    data-height="300"
-    data-units="L/Min"
-    data-min-value="0"
-    data-max-value="220"
-    data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220"
-    data-minor-ticks="2"
-    data-stroke-ticks="true"
-    data-highlights='[
-        {"from": 160, "to": 220, "color": "rgba(200, 50, 50, .75)"}
-    ]'
-    data-color-plate="#fff"
-    data-border-shadow-width="0"
-    data-borders="false"
-    data-needle-type="arrow"
-    data-needle-width="2"
-    data-needle-circle-size="7"
-    data-needle-circle-outer="true"
-    data-needle-circle-inner="false"
-    data-animation-duration="1500"
-    data-animation-rule="linear"
-
-></canvas>
-
-
-
-<canvas data-type="radial-gauge"
-
-    data-width="300"
-    data-height="300"
-    data-units="L/Min"
-    data-min-value="0"
-    data-max-value="220"
-    data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220"
-    data-minor-ticks="2"
-    data-stroke-ticks="true"
-    data-highlights='[
-        {"from": 160, "to": 220, "color": "rgba(200, 50, 50, .75)"}
-    ]'
-    data-color-plate="#fff"
-    data-border-shadow-width="0"
-    data-borders="false"
-    data-needle-type="arrow"
-    data-needle-width="2"
-    data-needle-circle-size="7"
-    data-needle-circle-outer="true"
-    data-needle-circle-inner="false"
-    data-animation-duration="1500"
-    data-animation-rule="linear"
-
-></canvas>
-
-<canvas data-type="radial-gauge"
-
-    data-width="300"
-    data-height="300"
-    data-units="L/Min"
-    data-min-value="0"
-    data-max-value="220"
-    data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220"
-    data-minor-ticks="2"
-    data-stroke-ticks="true"
-    data-highlights='[
-        {"from": 160, "to": 220, "color": "rgba(200, 50, 50, .75)"}
-    ]'
-    data-color-plate="#fff"
-    data-border-shadow-width="0"
-    data-borders="false"
-    data-needle-type="arrow"
-    data-needle-width="2"
-    data-needle-circle-size="7"
-    data-needle-circle-outer="true"
-    data-needle-circle-inner="false"
-    data-animation-duration="1500"
-    data-animation-rule="linear"
-
-></canvas>
- 
- -->
-
-
 </div>
 
+
+
+
+
 <canvas id="myChart" width="0.5" height="0.5" ></canvas>
+<canvas id="myChart2" width="0.5" height="0.5" ></canvas>
+
+
+
+
+
 
 <script>
-
-
-
-
 var ctx = document.getElementById('myChart');
-
-
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -266,46 +180,48 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-
-
-
-
 </script>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+var ctx = document.getElementById('myChart2');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: 'Ultimas temperaturas 24 Hrs',
+            data: [-2, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 
 
 <!--footer-->
@@ -318,80 +234,5 @@ var myChart = new Chart(ctx, {
 		    	   Email Contacto : agrocloud.tec@gmail.com</p>
 		    </div>
 
-
-
-<!--
-
-		    <div class="col-md-3 ftr-grid">
-		    	<h3>Plants</h3>
-		    	<ul>
-		    		<li><a href="singlepage.html">Qui blanditiis praesentium</a></li>
-		    		<li><a href="singlepage.html">Accusam dignissimos ducimu</a></li>
-		    		<li><a href="singlepage.html">deleniti atque  molestias.</a></li>
-		    		<li><a href="singlepage.html">voluptatum deleniti atque.</a></li>
-		    	</ul>
-		    </div>
-		    <div class="col-md-3 ftr-grid">
-					<h3>Flickr Posts</h3>
-					<div class="footer-grd">
-					
-						<a href="singlepage.html">
-						
-							<img src="images/fl1.jpg" class="img-responsive" alt=" ">
-						</a>
-					</div>
-					<div class="footer-grd">
-						<a href="singlepage.html">
-							<img src="images/fl2.jpg" class="img-responsive" alt=" ">
-						</a>
-					</div>
-					<div class="footer-grd">
-						<a href="singlepage.html">
-							<img src="images/fl3.jpg" class="img-responsive" alt=" ">
-						</a>
-					</div>
-					<div class="clearfix"> </div>
-					<div class="footer-grd">
-						<a href="singlepage.html">
-							<img src="images/fl4.jpg" class="img-responsive" alt=" ">
-						</a>
-					</div>
-					<div class="footer-grd">
-						<a href="singlepage.html">
-							<img src="images/fl5.jpg" class="img-responsive" alt=" ">
-						</a>
-					</div>
-					<div class="footer-grd">
-						<a href="singlepage.html">
-							<img src="images/fl6.jpg" class="img-responsive" alt=" ">
-						</a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-		    <div class="col-md-3 ftr-grid">
-		    	<h3>Follow Us</h3>
-		    	<ul>
-		    		<li><a href="#">Facebook</a></li>
-		    		<li><a href="#">Twitter</a></li>
-		    		<li><a href="#">Google +</a></li>
-		    		<li><a href="#">Skype</a></li>
-		    	</ul>
-		    </div>
-			<div class="clearfix"> </div>
-		</div>
-		<div class="copy-right">
-			   <p>© 2016 Greenery . All rights reserved | Design by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a></p>
-			<div class="copy-rights">
-					<ul>
-						<li><a href="#"><span class="fa"> </span></a></li>
-						<li><a href="#"><span class="tw"> </span></a></li>
-						<li><a href="#"><span class="g"> </span></a></li>
-					</ul>
-					<div class="clearfix"></div>
-			 </div>
-		</div>
-	</div>
-</div>
-footer-->
 </body>
 </html>
