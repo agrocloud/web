@@ -131,52 +131,6 @@ a.more {
 a.more:hover{
     background-color:#a8b400;
 }
-.copy-rights {
-    margin-top: 10px;
-}
-.copy-rights ul li{
-  padding: 0em;
-  list-style:none;
-  display:inline-block;
-}
-.copy-rights ul li a span.fa {
-  background-position: 0px -2px;
-}
-.copy-rights ul li a span.tw {
-  background-position: -41px -3px;
-}
-.copy-rights ul li a span.g {
-  background-position:-86px -4px;
-}
-.copy-rights ul li span.in {
-  background-position: -129px -4px;
-}
-.copy-rights ul li a  span.pin {
-  background-position:-174px -5px;
-}
-.copy-rights ul li a  span.fa:hover {
-  opacity:0.5;
-}
-.copy-rights ul li a span.tw:hover {
-  opacity:0.5;
-}
-.copy-rights ul li a span.g:hover {
-  opacity:0.5;
-}
- /*-- w3layouts --*/
-.copy-rights ul li a span.in:hover {
-  opacity:0.5;
-}
-.copy-rights ul li a span.pin:hover {
- opacity:0.5;
-}
-.copy-rights ul li span{
-  background:url(../images/ftr-icons.png)no-repeat;
-  width:34px;
-  height:36px;
-  display:block;
-}
-
 
 /*--primary--*/
 .primary {
@@ -315,9 +269,6 @@ h3.tittle, h2.tittle-one {
     color:#242f3a;
     font-size: 3em;
     text-align: center;
-}
-.contact,.plants,.about,.gallery,.typo,.single{
-	padding:5em 0;
 }
 
 
@@ -1415,5 +1366,12 @@ div#bs-example-navbar-collapse-1 {
   padding: 20px;
   text-align:center;
 }
+
+}
+
+.myChart2{
+  margin:20px auto;
+  padding: 20px;
+  text-align:center;
 
 }
