@@ -33,6 +33,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script src="js/gauge.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.0/chart.js"></script>
+
 
 
 
@@ -133,9 +135,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
-
-
-
 <!--
 
 <canvas data-type="radial-gauge"
@@ -220,7 +219,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  
  -->
 
+
 </div>
+
+<canvas id="myChart" width="0.5" height="0.5" ></canvas>
+
+<script>
+
+
+
+
+var ctx = document.getElementById('myChart');
+
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: 'Ultimas temperaturas 24 Hrs',
+            data: [-2, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+
+</script>
 
 
 
