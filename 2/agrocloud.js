@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
+
+//PUERTO A UTILIZAR PARA SERVER
 const port = 3000
 
+//EJS
 let ejs = require('ejs');
 app.use(express.static('./'));
 app.engine('.html', require('ejs').__express);
@@ -9,22 +12,118 @@ app.set('view engine', 'html');
 app.set('views',__dirname+'/');
 
 
+
+
+var router = express.Router();
+
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+app.use(express.static('2'));
+
+var path = __dirname + '/';
+
+var customers = [];
+
+router.use(function (req,res,next) {
+  console.log("/" + req.method);
+  next();
+});
+
+app.get("/",function(req,res){
+  res.sendFile(path + "index.html");
+});
+
+app.post("/index.html", function(req,res){
+  console.log('Post a Customer: ' + JSON.stringify(req.body));
+  var customer = {};
+  customer.firstname = req.body.firstname;
+  customer.lastname = req.body.lastname;
+  
+  customers.push(customer);
+  
+  return res.send(customer);
+});
+
+app.get("/index.html", function(req,res){
+  console.log("pico");
+  return res.send(customers);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+//ROUTES
 app.get('/', (req, res) => {
 res.render('index.html')
 
 })
+*/
 
+
+//JQUERY
+
+/*
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
+*/
+
+
+
+//ESCUCHA PUERTO
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
 
+ 
 
-
-
+//MONGO DB
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-// Connection URL
+
+
+
 const url = 'mongodb://localhost:27017';
 
 // Database Name
@@ -48,7 +147,7 @@ client.connect(function(err) {
 });
 
 
-
+//FUNCION INSERTAR DOCUMENTO
 const insertDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('documents');
@@ -67,7 +166,7 @@ const insertDocuments = function(db, callback) {
 
 
 
-
+//FUNCION RECOLECTAR DATOS
 const findDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('documents');
@@ -77,11 +176,9 @@ const findDocuments = function(db, callback) {
     console.log("Found the following records");
     console.log(docs)
     callback(docs);
-    
+
   });
 }
-
-
 
 
 
