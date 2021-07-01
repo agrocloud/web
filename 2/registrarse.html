@@ -36,19 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-<script>
 
-$.ajax({
-		url:'/ejemplo',
-		method:'POST',
-		data: {'nombre':'plomito'},
-		beforeSend: function(data){
-			console.log('Enviando...',data)
-		},
-	}).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)})
-
- 
-</script>
 
 
 
@@ -316,7 +304,7 @@ label.light {
 <script type="text/javascript">
 $("#enviar").click(function(event){
   $.ajax({
-    url:'/ejemplo',
+    url:'/registro',
     method:'POST',
     data: {first_name: $("#name").val(),password: $("#password").val(), email: $("#email").val(),cellphone : $("#cellphone").val(),Dirección : $("#direccion").val() },
 
@@ -326,6 +314,7 @@ $("#enviar").click(function(event){
   }).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)}) 
 })
 </script>
+
 
 
 
