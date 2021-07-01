@@ -279,24 +279,55 @@ label.light {
 
 
 
-     <form action="index.html" method="post">
+     <form action="/interface.html">
       
         <h1>Registrarse</h1>
         
         <fieldset>
           <legend><span class="number">1</span>Informacion Basica</legend>
+
           <label for="name">Nombre:</label>
           <input type="text" id="name" name="user_name">
           
-          <label for="mail">Email:</label>
-          <input type="email" id="mail" name="user_email">
+          <label for="name">Email:</label>
+          <input type="text" id="email" name="user_email">
           
           <label for="password">Contraseña:</label>
           <input type="password" id="password" name="user_password">
 
           <label for="password">Telefono:</label>
-          <input type="password" id="cellphone" name="user_password">
+          <input type="text" id="cellphone" name="user_password">
+          </fieldset>
+
+          <fieldset>
+          <legend><span class="number">2</span>Dirección</legend>
+          <label for="bio"></label>
+          <textarea id="direccion" name="user_bio"></textarea>
+        </fieldset>
+
+        <button type="submit" id=enviar>Registrarse</button>
+
          
+
+
+      </form>
+      
+
+<script type="text/javascript">
+$("#enviar").click(function(event){
+  $.ajax({
+    url:'/ejemplo',
+    method:'POST',
+    data: {first_name: $("#name").val(),password: $("#password").val(), email: $("#email").val(),cellphone : $("#cellphone").val(),Dirección : $("#direccion").val() },
+
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+  }).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)}) 
+})
+</script>
+
+
 
  <!--         
           <label>Age:</label>
@@ -305,12 +336,11 @@ label.light {
         </fieldset>
         
   -->      
-        <fieldset>
-          <legend><span class="number">2</span>Dirreccion</legend>
-          <label for="bio"></label>
-          <textarea id="direccion" name="user_bio"></textarea>
-        </fieldset>
 
+
+  <!--
+       
+-->
 
 <!--        
         <fieldset>
@@ -349,36 +379,9 @@ label.light {
         
 -->
 
-        </fieldset>
-        <button type="submit" id=enviar>Registrarse</button>
-      </form>
-      
+       
 
 
-
-<script type="text/javascript">
-$("#enviar").click(function(event){
-  $.ajax({
-    url:'/ejemplo',
-    method:'POST',
-    data: {first_name: $("#name").val(),
-        
-            password: $("#password").val(),
-
-            email: $("email").val(),
-
-            cellphone : $("cellphone").val(),
-
-            Dirección : $("direccion").val()
-
-          },
-
-    beforeSend: function(data){
-      console.log('Enviando...',data)
-    },
-  }).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)}) 
-})
-</script>
 
 
 
