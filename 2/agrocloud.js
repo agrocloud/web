@@ -193,15 +193,11 @@ app.post("/login",function(req,res)
 res.send("respuesta")
 console.log(req.body)
 
-  /*
+  
 console.log(req.body);
 
  const db = client.db(dbName);
 const collection = db.collection('documents');
-  // Insert some documents
-  //collection.insertOne(req.body)
-
-
 
 
 collection.find(req.body).toArray(function(err, docs) {
@@ -216,21 +212,21 @@ if(docs.length == 0)
 {
 
   console.log("objeto no encontrado")
-  res.status(200).send("usuario no registrado")
+
 
 }
 else
 {
 
 console.log("objeto encontrado")
-res.status(200).send("usuario registrado")
+
 
 }
 
   });
 
 
-*/
+
 
 }
 
