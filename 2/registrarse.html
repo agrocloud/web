@@ -355,6 +355,48 @@ label.light {
       
 
 
+
+<script type="text/javascript">
+$("#boton").click(function(event){
+  $.ajax({
+    url:'/ejemplo',
+    method:'POST',
+    data: {first_name: $("#name").val(),
+        
+            password: $("#password").val(),
+
+            email: $("email").val(),
+
+            cellphone : $("cellphone").val(),
+
+            Dirección : $("direccion").val()
+
+          },
+
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+  }).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)}) 
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--footer-->
 <div class="footer">
 	<div class="container">
