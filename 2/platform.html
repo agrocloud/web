@@ -154,14 +154,16 @@ $.ajax({
     <h1>Login</h1>
 
   
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Email" name="email" required id=name>
 
     
 
 
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw" required id=password>
 
-    <button type="submit" class="btn" id="boton">Login</button>
+    <button type="submit" class="btn" id="boton">Ingresa</button>
+
+    <button type="button" class="btn" id="boton2">Registrarse</button>
 
 
   </form>
@@ -178,13 +180,15 @@ $.ajax({
 
 
 
-
 <script type="text/javascript">
 $("#boton").click(function(event){
   $.ajax({
     url:'/ejemplo',
     method:'POST',
-    data: {'nombre':$('#name').val()},
+    data: {first_name: $("#name").val(),
+        
+            password: $("#password").val()},
+
     beforeSend: function(data){
       console.log('Enviando...',data)
     },

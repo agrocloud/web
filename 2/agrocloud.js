@@ -128,7 +128,12 @@ client.connect(function(err) {
     client.close();
   });
  });
+
+
+
 });
+
+
 
 
 //FUNCION INSERTAR DOCUMENTO
