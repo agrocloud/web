@@ -14,11 +14,25 @@ app.set('views',__dirname+'/');
 
 
 
+
+
+
 var router = express.Router();
+
+
+
+//ruta y Json , funcion que media entre las peticiones y el servidor 
 
 var bodyParser = require('body-parser');
 
+
+var urlencodedParser = bodyParser.urlencoded({extended:true});
+
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+
+
 
 app.use(express.static('2'));
 
@@ -26,30 +40,34 @@ var path = __dirname + '/';
 
 var customers = [];
 
+
+
+/*
 router.use(function (req,res,next) {
   console.log("/" + req.method);
   next();
 });
+*/
+
+
 
 app.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
 
-app.post("/index.html", function(req,res){
-  console.log('Post a Customer: ' + JSON.stringify(req.body));
-  var customer = {};
-  customer.firstname = req.body.firstname;
-  customer.lastname = req.body.lastname;
-  
-  customers.push(customer);
-  
-  return res.send(customer);
-});
 
-app.get("/index.html", function(req,res){
-  console.log("pico");
-  return res.send(customers);
-});
+
+//Jquery
+
+app.post("/ejemplo",function(req,res)
+
+{
+console.log(req.body);
+res.status(200).send("respuesta desde plomo")
+
+}
+
+  );
 
 
 
@@ -73,40 +91,6 @@ app.get("/index.html", function(req,res){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-//ROUTES
-app.get('/', (req, res) => {
-res.render('index.html')
-
-})
-*/
-
-
-//JQUERY
-
-/*
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
-*/
 
 
 
@@ -162,8 +146,6 @@ const insertDocuments = function(db, callback) {
     callback(result);
   });
 }
-
-
 
 
 //FUNCION RECOLECTAR DATOS

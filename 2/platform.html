@@ -23,6 +23,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
+
+
+
+
+
+
+
+
+
+<!--instalación jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script>
+
+$.ajax({
+		url:'/ejemplo',
+		method:'POST',
+		data: {'nombre':'plomito'},
+		beforeSend: function(data){
+			console.log('Enviando...',data)
+		},
+	}).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)})
+
+ 
+</script>
+
+
+
+
 <!-- //Custom Theme files -->
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script> 
@@ -131,7 +161,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <input type="password" placeholder="Enter Password" name="psw" required>
 
-    <button type="submit" class="btn" >Login</button>
+    <button type="submit" class="btn" id="boton">Login</button>
 
 
   </form>
@@ -140,6 +170,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   
 </div>
 
+<!--
+<label for="Datos">Introduzca el nombre:</label>
+<input type="text" name="Datos" id="name" placeholder="Nombre">
+<button id="boton">Boton</button>
+-->
+
+
+
+
+<script type="text/javascript">
+$("#boton").click(function(event){
+  $.ajax({
+    url:'/ejemplo',
+    method:'POST',
+    data: {'nombre':$('#name').val()},
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+  }).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)}) 
+})
+</script>
 
 
 	</div>	

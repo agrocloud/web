@@ -1,10 +1,4 @@
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +11,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Greenery Responsive Web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web template, 
 	Smartphone Compatible Web template, free Webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola Web design" />
+
+
+<!--instalación jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script>
+
+$.ajax({
+		url:'/ejemplo',
+		method:'POST',
+		data: {'nombre':'plomito'},
+		beforeSend: function(data){
+			console.log('Enviando...',data)
+		},
+	}).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)})
+
+ 
+</script>
+
+
+
+
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //Custom Theme files -->
 <!-- js -->
@@ -119,6 +141,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>	
 <!--navigation-->
 
+
+
+
+
+<label for="Datos">Introduzca el nombre:</label>
+<input type="text" name="Datos" id="name" placeholder="Nombre">
+<button id="boton">Boton</button>
+
+
+
+
+<script type="text/javascript">
+$("#boton").click(function(event){
+  $.ajax({
+    url:'/ejemplo',
+    method:'POST',
+    data: {'nombre':$('#name').val()},
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+  }).done(function(respuesta){console.log('Respuesta recibida:',respuesta)}).fail(function(err){console.log(err)}) 
+})
+</script>
 
 
 
