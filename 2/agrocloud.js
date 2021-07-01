@@ -59,17 +59,6 @@ app.get("/",function(req,res){
 
 //Jquery
 
-app.post("/ejemplo",function(req,res)
-
-{
-console.log(req.body);
-res.status(200).send("respuesta desde plomo")
-
-}
-
-  );
-
-
 
 
 
@@ -125,10 +114,8 @@ client.connect(function(err) {
 
  insertDocuments(db, function() {
   findDocuments(db, function() {
-    client.close();
   });
  });
-
 
 
 });
@@ -166,6 +153,35 @@ const findDocuments = function(db, callback) {
 
   });
 }
+
+
+
+app.post("/ejemplo",function(req,res)
+
+{
+console.log(req.body);
+
+ const db = client.db(dbName);
+const collection = db.collection('documents');
+  // Insert some documents
+  collection.insertOne(req.body)
+res.status(200).send("usuario registrado")
+
+
+
+collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+
+  });
+
+
+
+
+}
+
+  );
 
 
 
