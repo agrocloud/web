@@ -350,14 +350,14 @@ label.light {
 -->
 
         </fieldset>
-        <button type="submit">Registrarse</button>
+        <button type="submit" id=enviar>Registrarse</button>
       </form>
       
 
 
 
 <script type="text/javascript">
-$("#boton").click(function(event){
+$("#enviar").click(function(event){
   $.ajax({
     url:'/ejemplo',
     method:'POST',
