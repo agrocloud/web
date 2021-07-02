@@ -9,9 +9,11 @@
   "author": "agrocloud",
   "license": "ISC",
   "dependencies": {
+
+    "canvas-gauges": "git@github.com:Mikhus/canvas-gauges.git",
     "ajax": "0.0.4",
     "body-parser": "^1.19.0",
-    "canvas-gauges": "^2.1.7-linear",
+    "canvas-gauges": "^2.1.7",
     "chart.js": "^3.4.0",
     "ejs": "^3.1.6",
     "jquery": "^3.6.0",
