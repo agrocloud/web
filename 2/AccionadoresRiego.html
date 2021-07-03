@@ -21,6 +21,93 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="css/login.css" type="text/css" rel="stylesheet" media="all">
 -->
     
+<style>
+#sliderLabel {
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+    display: inline-block;
+}
+
+#sliderLabel input {
+    display: none;
+}
+
+#sliderLabel input:checked + #slider {
+    left: 0px;
+}
+
+#slider {
+    left: -50px;
+    position: absolute;
+    top: 0px;
+    -webkit-transition: left .25s ease-out;
+    -moz-transition: left .25s ease-out;
+    -o-transition: left .25s ease-out;
+    -ms-transition: left .25s ease-out;
+    transition: left .25s ease-out;
+}
+
+#sliderOn,
+#sliderBlock,
+#sliderOff {
+    display: block;
+    font-family: arial, verdana, sans-serif;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+}
+
+#sliderOn {
+    background: #3269aa;
+    background: -webkit-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -moz-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -o-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -ms-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    color: white;
+    left: 0px;
+    width: 54px;
+}
+
+#sliderBlock {
+    background: #d9d9d8;
+    background: -webkit-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -moz-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -o-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -ms-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 28px;
+    left: 50px;
+    width: 50px;
+}
+
+#sliderOff {
+    background: #f2f3f2;
+    background: -webkit-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -moz-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -o-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -ms-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    color: #8b8b8b;
+    left: 96px;
+    width: 54px;
+}
+</style>
 
 
 
@@ -129,33 +216,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--navigation-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<div class="banner-1">
-
-
-
-
-
 
 <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css"/>
 
@@ -246,98 +307,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     }
 </script>
 
-</div>
 
 
-</div>
 
-<style>
-#sliderLabel {
-    border: 1px solid #a2a2a2;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    cursor: pointer;
-    display: block;
-    height: 30px;
-    overflow: hidden;
-    position: relative;
-    width: 100px;
-    display: inline-block;
-}
 
-#sliderLabel input {
-    display: none;
-}
 
-#sliderLabel input:checked + #slider {
-    left: 0px;
-}
-
-#slider {
-    left: -50px;
-    position: absolute;
-    top: 0px;
-    -webkit-transition: left .25s ease-out;
-    -moz-transition: left .25s ease-out;
-    -o-transition: left .25s ease-out;
-    -ms-transition: left .25s ease-out;
-    transition: left .25s ease-out;
-}
-
-#sliderOn,
-#sliderBlock,
-#sliderOff {
-    display: block;
-    font-family: arial, verdana, sans-serif;
-    font-weight: bold;
-    height: 30px;
-    line-height: 30px;
-    position: absolute;
-    text-align: center;
-    top: 0px;
-}
-
-#sliderOn {
-    background: #3269aa;
-    background: -webkit-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
-    background: -moz-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
-    background: -o-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
-    background: -ms-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
-    background: linear-gradient(top, #3269aa 0%, #82b3f4 100%);
-    color: white;
-    left: 0px;
-    width: 54px;
-}
-
-#sliderBlock {
-    background: #d9d9d8;
-    background: -webkit-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
-    background: -moz-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
-    background: -o-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
-    background: -ms-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
-    background: linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
-    border: 1px solid #a2a2a2;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    height: 28px;
-    left: 50px;
-    width: 50px;
-}
-
-#sliderOff {
-    background: #f2f3f2;
-    background: -webkit-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
-    background: -moz-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
-    background: -o-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
-    background: -ms-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
-    background: linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
-    color: #8b8b8b;
-    left: 96px;
-    width: 54px;
-}
-</style>
 
 <!--
 
@@ -352,9 +326,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 
+
 <script type="text/javascript">
 
-for (var item = 0; item < 20; item++) {
+$( document ).ready(function() {
+
+
+  $.ajax({
+    url:'/accionadores',
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+   const numero = respuesta.length;
+   console.log(numero);
+   crear(numero)
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+
+ alert("documentolisto")
+});
+
+</script>
+
+
+<script type="text/javascript">
+
+function crear(numero){
+console.log(numero);
+for (var item = 0; item < numero; item++) {
 
 var newContent1 = document.createTextNode("ON");
 var newContent2 = document.createTextNode("OFF");
@@ -417,10 +434,9 @@ var newContent2 = document.createTextNode("OFF");
       alert(clicked_id);
   }
 
+}
+
 </script>
-
-
-
 
 
 
@@ -441,8 +457,5 @@ var newContent2 = document.createTextNode("OFF");
 
 </div>
 </div>
-
-
-
 </body>
 </html>

@@ -204,6 +204,30 @@ res.send("True")
   );
 
 
+app.post("/accionadores",function(req,res)
+
+{
+
+const db = client.db(dbName);
+
+
+const collection = db.collection('accionadores');
+
+
+collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+res.send(docs)
+  });
+
+console.log("peticion recibida")
+
+}
+
+  );
+
+
 
 
 
