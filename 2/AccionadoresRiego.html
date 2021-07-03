@@ -249,40 +249,182 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
+<style>
+#sliderLabel {
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+    display: inline-block;
+}
+
+#sliderLabel input {
+    display: none;
+}
+
+#sliderLabel input:checked + #slider {
+    left: 0px;
+}
+
+#slider {
+    left: -50px;
+    position: absolute;
+    top: 0px;
+    -webkit-transition: left .25s ease-out;
+    -moz-transition: left .25s ease-out;
+    -o-transition: left .25s ease-out;
+    -ms-transition: left .25s ease-out;
+    transition: left .25s ease-out;
+}
+
+#sliderOn,
+#sliderBlock,
+#sliderOff {
+    display: block;
+    font-family: arial, verdana, sans-serif;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+}
+
+#sliderOn {
+    background: #3269aa;
+    background: -webkit-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -moz-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -o-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -ms-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    color: white;
+    left: 0px;
+    width: 54px;
+}
+
+#sliderBlock {
+    background: #d9d9d8;
+    background: -webkit-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -moz-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -o-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -ms-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 28px;
+    left: 50px;
+    width: 50px;
+}
+
+#sliderOff {
+    background: #f2f3f2;
+    background: -webkit-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -moz-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -o-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -ms-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    color: #8b8b8b;
+    left: 96px;
+    width: 54px;
+}
+</style>
+
+<!--
+
+<label id="sliderLabel">
+    <input type="checkbox" />
+    <span id="slider">
+        <span id="sliderOn">ON</span>
+    <span id="sliderOff">OFF</span>
+    <span id="sliderBlock"></span>
+    </span>
+</label>
+-->
+
+
+<script type="text/javascript">
+
+for (var item = 0; item < 20; item++) {
+
+var newContent1 = document.createTextNode("ON");
+var newContent2 = document.createTextNode("OFF");
+
+
+            var label=document.createElement("label")
+            label.setAttribute('id' , "sliderLabel")
+
+
+             var spa=document.createElement("span")
+               var spa2=document.createElement("span")
+
+
+               spa2.setAttribute('id',"sliderOn")
+               spa2.appendChild(newContent1)
+
+
+                 var spa3=document.createElement("span")
+                 spa3.setAttribute('id',"sliderOff")
+                 spa3.appendChild(newContent2)
+                 var spa4=document.createElement("span")
+                 spa4.setAttribute('id',"sliderBlock")
+
+
+             spa.setAttribute('id',"slider")
+             spa.appendChild(spa2)
+             spa.appendChild(spa3)
+             spa.appendChild(spa4)
+
+
+            var canv = document.createElement("input");
+            canv.setAttribute('type', "checkbox")
+            canv.setAttribute('id', item);
+            canv.setAttribute('onclick', "reply_click(this.id)");
+
+
+
+  var newDiv = document.createElement("div");
+  var newContent = document.createTextNode("Boton"+" "+item.toString());
+  var salto=document.createElement("br")
+
+  label.appendChild(canv)
+  label.appendChild(spa)
+  newDiv.appendChild(newContent); //añade texto al div creado.
+ newDiv.appendChild(salto); //añade texto al div creado.
+  newDiv.appendChild(label); //añade texto al div creado.
+
+  // añade el elemento creado y su contenido al DOM
+  var currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, currentDiv);
 
 
 
 
- 
+        }
+
+
+ function reply_click(clicked_id)
+  {
+      alert(clicked_id);
+  }
+
+</script>
+
+
+
+
+
+
+
 
 
 

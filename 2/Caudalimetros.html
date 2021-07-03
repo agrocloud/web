@@ -346,28 +346,7 @@ for (var item = 0; item < 3; item++) {
 
   
 
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 if (!window.addEventListener) {
     window.addEventListener = function(evt, listener) {
         window.attachEvent('on' + evt, listener);
@@ -395,7 +374,7 @@ window.addEventListener('load', function() {
 
 </script>
 
-
+ 
 </div>
 
 
@@ -420,9 +399,12 @@ window.addEventListener('load', function() {
 
 
 
-
-
-
+ <form action="/action_page.php">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <button type="submit">Submit</button>
+        </form>
+        
 
 
 
