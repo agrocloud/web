@@ -89,12 +89,12 @@ client.connect(function(err) {
   console.log("Connected successfully to server");
 
   const db = client.db(dbName);
-
+ /*
  insertDocuments(db, function() {
   findDocuments(db, function() {
   });
  });
-
+*/
 
 });
 
@@ -227,13 +227,15 @@ console.log("peticion recibida")
 
   );
 
+
+
 var mqtt = require('mqtt')
 var client2  = mqtt.connect('mqtt://localhost:1883')
  
 client2.on('connect', function () {
-  client2.subscribe('presence', function (err) {
+  client2.subscribe('huerto', function (err) {
     if (!err) {
-      client2.publish('presence', 'Hello mqtt')
+      client2.publish('huerto', 'pico')
     }
   })
 })
@@ -241,7 +243,7 @@ client2.on('connect', function () {
 client2.on('message', function (topic, message) {
   // message is Buffer
   console.log(message.toString())
-  client2.end()
+
 })
 
 
