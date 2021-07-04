@@ -229,15 +229,52 @@ console.log("peticion recibida")
 
 
 
+app.post("/nodos",function(req,res)
+
+{
+
+const db = client.db(dbName);
+
+
+const collection = db.collection('nodos');
+
+
+collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+res.send(docs)
+  });
+
+console.log("peticion recibida")
+
+}
+
+  );
+
+
+
+
+
 var mqtt = require('mqtt')
 var client2  = mqtt.connect('mqtt://localhost:1883')
  
 client2.on('connect', function () {
-  client2.subscribe('huerto', function (err) {
+
+
+  client2.subscribe('nodo1', function (err) {
     if (!err) {
-      client2.publish('huerto', 'pico')
+      client2.publish('nodo1', 'pico')
     }
   })
+
+   client2.subscribe('nodo2', function (err) {
+    if (!err) {
+      client2.publish('nodo2', 'pico')
+    }
+  })
+
+  
 })
  
 client2.on('message', function (topic, message) {

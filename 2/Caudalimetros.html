@@ -127,94 +127,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="banner-1">
 
 
-<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css"/>
-
-    <style>
-        .tabBlock
-        {
-            background-color:#57574f;
-            border:solid 0px #FFA54F;
-            border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
-            max-width:200px;
-            width:100%;
-            overflow:hidden;
-            display:block;
-        }
-        .clock
-        {
-            vertical-align:middle;
-            font-family:Orbitron;
-            font-size:40px;
-            font-weight:normal;
-            color:#FFF;
-            padding:0 10px;
-        }
-        .clocklg 
-        {
-            vertical-align:middle; 
-            font-family:Orbitron;
-            font-size:20px;
-            font-weight:normal;
-            color:#FFF;
-        }
-    </style>
-</head>
-
-<!-- ON LOAD OF THE PAGE, THE CLOCK WILL START TICKING. -->
-<body onload="digitized();">
-    <div style="
-        max-width:300px;width:120%;margin:0 auto;padding:20px;">
-
-        <table class="tabBlock" align="center" cellspacing="0" cellpadding="0" border="0">
-            <tr><td class="clock" id="dc"></td>  <!-- THE DIGITAL CLOCK. -->
-                <td>
-                    <table cellpadding="0" cellspacing="0" border="0">
-                    
-                        <!-- HOUR IN 'AM' AND 'PM'. -->
-                        <tr><td class="clocklg" id="dc_hour"></td></tr>
-
-                        <!-- SHOWING SECONDS. -->
-                        <tr><td class="clocklg" id="dc_second"></td></tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
-
-<script>
-    // OUR FUNCTION WHICH IS EXECUTED ON LOAD OF THE PAGE.
-    function digitized() {
-        var dt = new Date();    // DATE() CONSTRUCTOR FOR CURRENT SYSTEM DATE AND TIME.
-        var hrs = dt.getHours();
-        var min = dt.getMinutes();
-        var sec = dt.getSeconds();
-
-        min = Ticking(min);
-        sec = Ticking(sec);
-
-        document.getElementById('dc').innerHTML = hrs + ":" + min;
-        document.getElementById('dc_second').innerHTML = sec;
-
-        if (hrs > 12) { 
-            document.getElementById('dc_hour').innerHTML = 'PM'; 
-        }
-        else { 
-            document.getElementById('dc_hour').innerHTML = 'AM'; 
-        }
-
-        // CALL THE FUNCTION EVERY 1 SECOND (RECURSION).
-        var time
-        time = setInterval('digitized()', 1000);
-    }
-
-    function Ticking(ticVal) {
-        if (ticVal < 10) {
-            ticVal = "0" + ticVal;
-        }
-        return ticVal;
-    }
-</script>
 
 </div>
 
@@ -357,29 +269,85 @@ if (!Array.prototype.forEach) {
 
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
-<script>
-	var temp;
 
-for (var item = 0; item < 10; item++) {
-          
+
+<script type="text/javascript">
+
+
+  
+
+
+$( document ).ready(function() {
+
+
+  $.ajax({
+    url:'/nodos',
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+    const numero = respuesta.length;
+    let nombres = respuesta;
+    const canales=[];
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+ 
+   //console.log(numero);
+
+   
+
+for ( var item = 0; item < numero ; item++) {
+           
             var canv = document.createElement("canvas");
             canv.setAttribute('width', 500);
             canv.setAttribute('height', 500);
 
             canv.setAttribute('id', item);
             document.body.appendChild(canv);
- new RadialGauge({ renderTo: item.toString() ,width: 400,
-    height: 400, }).draw();
-      
+
+            canales.push(nombres[item].id)
+            //console.log(canales);
+
         }
 
+   comu(canales,numero);
 
-    // Globally initializes an mqtt variable
-    console.log(mqtt)
 
-    const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+}).fail(function(err){
+    console.log(err)
+    
 
-const host = 'ws://localhost:9001'
+  }
+
+    )
+//console.log(canales);
+
+ alert("Descargando información del usuario")
+
+
+});
+
+
+
+
+function comu(canales,numero)
+{
+
+
+let canales2=[];
+canales2=canales;
+const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+
+
+const host = 'ws://192.168.43.42:9001'
 
 const options = {
   keepalive: 60,
@@ -397,6 +365,7 @@ const options = {
   },
 }
 
+
 console.log('Connecting mqtt client')
 const client = mqtt.connect(host, options)
 
@@ -410,54 +379,86 @@ client.on('reconnect', () => {
 })
 
 
+
 client.on('connect', () => {
   console.log('Client connected:' + clientId)
   // Subscribe
-  client.subscribe('huerto', { qos: 0 })
+
+  
 })
 
-// Received
+console.log(canales);
+;
+
+
+
+var gauges=[];
+for ( var item = 0; item < numero ; item++) {
+
+ client.subscribe(canales[item], { qos: 0 })
+          
+gauges[item] = new RadialGauge({ renderTo: item.toString() ,width: 400,
+    height: 400, id:item}).draw()
+
+
+        }
+
+
+    
+
+
+
+
+/*
+nodo2 = new RadialGauge({ renderTo: "1" ,width: 400,
+    height: 400, id:item}).draw()
+*/
+
+
+
+
+
+
+
 client.on('message', (topic, message, packet) => {
   console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
   
-temp=message.toString();
-console.log(temp);
-console.log(temp);
+var msn=message.toString();
+
+console.log(canales[0])
+
+
+
+
+for ( var item = 0; item < numero ; item++) {
+
+ if(topic.toString()==canales[item])
+
+ 	gauges[item].value = parseInt(msn)
+
+        }
+
+
+
+
+
 })
 
 
 
-// Received
-client.on('message', (topic, message, packet) => {
-  console.log(message.toString())
- new RadialGauge({ renderTo: item.toString() ,width: 400,
-    height: 400, }).draw();
-      
 
 
-})
+}
 
-
-
-
-
-
-
-  window.addEventListener('load', function() {
-    document.gauges.forEach(function(gauge) {
-        setInterval(function() {
-            gauge.value = 20
-                 
-              
-        }, gauge.animation.duration + 500);
-    });
-});
 </script>
 
 
 
-<!--footer-->
-<div class="footer">
+
+
+<!--
+
+<div id="hola" class="footer">
 	<div class="container">
 		<div class="footer-main">
 		    <div class="col-md-3 ftr-grid animated wow fadeInLeft" data-wow-delay=".5s">
@@ -465,8 +466,10 @@ client.on('message', (topic, message, packet) => {
 		    	<p>Whassap Ventas y Ascesorias : +56948003699
 		    	   Email Contacto : agrocloud.tec@gmail.com</p>
 		    </div>
-
-
+</div>
+</div>
+</div>
+-->
 
 <!--
 
