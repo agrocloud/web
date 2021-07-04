@@ -112,7 +112,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
-
+  <style>
+        .tabBlock
+        {
+            background-color:#57574f;
+            border:solid 0px #FFA54F;
+            border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
+            max-width:200px;
+            width:100%;
+            overflow:hidden;
+            display:block;
+        }
+        .clock
+        {
+            vertical-align:middle;
+            font-family:Orbitron;
+            font-size:40px;
+            font-weight:normal;
+            color:#FFF;
+            padding:0 10px;
+        }
+        .clocklg 
+        {
+            vertical-align:middle; 
+            font-family:Orbitron;
+            font-size:20px;
+            font-weight:normal;
+            color:#FFF;
+        }
+    </style>
 
 
 <!-- Custom Theme files -->
@@ -220,36 +248,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css"/>
 
-    <style>
-        .tabBlock
-        {
-            background-color:#57574f;
-            border:solid 0px #FFA54F;
-            border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
-            max-width:200px;
-            width:100%;
-            overflow:hidden;
-            display:block;
-        }
-        .clock
-        {
-            vertical-align:middle;
-            font-family:Orbitron;
-            font-size:40px;
-            font-weight:normal;
-            color:#FFF;
-            padding:0 10px;
-        }
-        .clocklg 
-        {
-            vertical-align:middle; 
-            font-family:Orbitron;
-            font-size:20px;
-            font-weight:normal;
-            color:#FFF;
-        }
-    </style>
-</head>
+  
 
 <!-- ON LOAD OF THE PAGE, THE CLOCK WILL START TICKING. -->
 <body onload="digitized();">
@@ -306,7 +305,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         return ticVal;
     }
 </script>
-
+</div>
 
 
 
@@ -326,51 +325,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 
+<div id="botons">
 
 <script type="text/javascript">
 
-$( document ).ready(function() {
-
-
-  $.ajax({
-    url:'/accionadores',
-    method:'POST',
-    datatype:"JSON",
-    contentType: "application/json",
-    beforeSend: function(data){
-      console.log('Enviando...',data)
-    },
-
-
-  }).done(function(respuesta){
-
-
-    console.log('Respuesta recibida:',respuesta)
-    console.log(respuesta)
-   console.log(respuesta.length)
-   const numero = respuesta.length;
-   console.log(numero);
-   crear(numero)
-
-
-}).fail(function(err){
-    console.log(err)
-    
-
-  }
-
-    )
-
- alert("documentolisto")
-});
-
-</script>
-
-
-<script type="text/javascript">
-
-function crear(numero){
+function crear(numero , nombres){
 console.log(numero);
+console.log(nombres);
+console.log(nombres[0].nombre)
+
+
 for (var item = 0; item < numero; item++) {
 
 var newContent1 = document.createTextNode("ON");
@@ -410,7 +374,7 @@ var newContent2 = document.createTextNode("OFF");
 
 
   var newDiv = document.createElement("div");
-  var newContent = document.createTextNode("Boton"+" "+item.toString());
+  var newContent = document.createTextNode("Boton"+" "+nombres[item].nombre);
   var salto=document.createElement("br")
 
   label.appendChild(canv)
@@ -420,31 +384,69 @@ var newContent2 = document.createTextNode("OFF");
   newDiv.appendChild(label); //añade texto al div creado.
 
   // añade el elemento creado y su contenido al DOM
-  var currentDiv = document.getElementById("div1");
+  var currentDiv = document.getElementById("botons  ");
   document.body.insertBefore(newDiv, currentDiv);
-
-
-
 
         }
 
 
- function reply_click(clicked_id)
-  {
-      alert(clicked_id);
-  }
+ 
 
 }
 
+function reply_click(clicked_id)
+  {
+      alert(clicked_id);
+  }
 </script>
 
 
+<script type="text/javascript">
+
+$( document ).ready(function() {
+
+
+  $.ajax({
+    url:'/accionadores',
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+   const numero = respuesta.length;
+   let nombres = respuesta;
+   console.log(numero);
+   crear(numero , nombres)
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+
+ alert("documentolisto")
+});
+
+</script>
+
+</div>
 
 
 
+<!--
 
-
-<!--footer-->
 <div class="footer">
 	<div class="container">
 		<div class="footer-main">
@@ -459,3 +461,4 @@ var newContent2 = document.createTextNode("OFF");
 </div>
 </body>
 </html>
+-->

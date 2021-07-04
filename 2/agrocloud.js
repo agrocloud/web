@@ -227,6 +227,23 @@ console.log("peticion recibida")
 
   );
 
+var mqtt = require('mqtt')
+var client2  = mqtt.connect('mqtt://localhost:1883')
+ 
+client2.on('connect', function () {
+  client2.subscribe('presence', function (err) {
+    if (!err) {
+      client2.publish('presence', 'Hello mqtt')
+    }
+  })
+})
+ 
+client2.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  client2.end()
+})
+
 
 
 
