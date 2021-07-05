@@ -124,7 +124,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
-	<div class="banner-1">
+	<div class="banner-1" id="banner">
 
 
 
@@ -280,7 +280,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <canvas id="gauge1"></canvas>
 -->
 
-<div id="console"></div>
 
 <script>
 /*
@@ -518,5 +517,66 @@ for ( var item = 0; item < numero ; item++) {
 
 
 
+<div id="botons">
+</div>
+
+<script type="text/javascript">
+
+
+for (var item = 0; item < 20; item++) {
+
+var newContent1 = document.createTextNode("ON");
+var newContent2 = document.createTextNode("OFF");
+
+
+            var label=document.createElement("label")
+            label.setAttribute('id' , "sliderLabel")
+
+
+             var spa=document.createElement("span")
+               var spa2=document.createElement("span")
+
+
+               spa2.setAttribute('id',"sliderOn")
+               spa2.appendChild(newContent1)
+
+
+                 var spa3=document.createElement("span")
+                 spa3.setAttribute('id',"sliderOff")
+                 spa3.appendChild(newContent2)
+                 var spa4=document.createElement("span")
+                 spa4.setAttribute('id',"sliderBlock")
+
+
+             spa.setAttribute('id',"slider")
+             spa.appendChild(spa2)
+             spa.appendChild(spa3)
+             spa.appendChild(spa4)
+
+
+            var canv = document.createElement("input");
+            canv.setAttribute('type', "checkbox")
+            canv.setAttribute('id', item);
+            canv.setAttribute('onclick', "reply_click(this.id)");
+
+
+
+  var newDiv = document.createElement("div");
+  var newContent = document.createTextNode("Boton"+" ");
+  var salto=document.createElement("br")
+
+  label.appendChild(canv)
+  label.appendChild(spa)
+  newDiv.appendChild(newContent); //añade texto al div creado.
+ newDiv.appendChild(salto); //añade texto al div creado.
+  newDiv.appendChild(label); //añade texto al div creado.
+
+  // añade el elemento creado y su contenido al DOM
+  var currentDiv = document.getElementById("botons  ");
+ // document.body.insertBefore(newDiv, currentDiv);
+
+        }
+        
+</script>
 </body>
 </html>
