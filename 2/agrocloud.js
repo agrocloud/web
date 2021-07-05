@@ -238,7 +238,6 @@ const db = client.db(dbName);
 
 const collection = db.collection('nodos');
 
-
 collection.find({}).toArray(function(err, docs) {
     assert.equal(err, null);
     console.log("Found the following records");
@@ -247,7 +246,6 @@ res.send(docs)
   });
 
 console.log("peticion recibida")
-
 }
 
   );
@@ -282,6 +280,8 @@ client2.on('message', function (topic, message) {
   console.log(message.toString())
 
 })
+
+
 
 
 
