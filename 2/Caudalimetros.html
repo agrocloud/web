@@ -1,4 +1,4 @@
-s<!--
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -511,138 +511,12 @@ for ( var item = 0; item < numero ; item++) {
 
         }
 
-
-
-
-
 })
-
-
-
-
-
 }
 
 </script>
 
 
-
-<script type="text/javascript">
-
-
-function reply_click(clicked_id)
-  {
-      alert(clicked_id);
-  }
-</script>
-
-
-<script type="text/javascript">
-
-function crear(numero , nombres){
-console.log(numero);
-console.log(nombres);
-console.log(nombres[0].nombre)
-
-
-for (var item = 0; item < numero; item++) {
-
-var newContent1 = document.createTextNode("ON");
-var newContent2 = document.createTextNode("OFF");
-
-
-            var label=document.createElement("label")
-            label.setAttribute('id' , "sliderLabel")
-
-
-             var spa=document.createElement("span")
-               var spa2=document.createElement("span")
-
-
-               spa2.setAttribute('id',"sliderOn")
-               spa2.appendChild(newContent1)
-
-
-                 var spa3=document.createElement("span")
-                 spa3.setAttribute('id',"sliderOff")
-                 spa3.appendChild(newContent2)
-                 var spa4=document.createElement("span")
-                 spa4.setAttribute('id',"sliderBlock")
-
-
-             spa.setAttribute('id',"slider")
-             spa.appendChild(spa2)
-             spa.appendChild(spa3)
-             spa.appendChild(spa4)
-
-
-            var canv = document.createElement("input");
-            canv.setAttribute('type', "checkbox")
-            canv.setAttribute('id', item);
-            canv.setAttribute('onclick', "reply_click(this.id)");
-
-
-
-  var newDiv = document.createElement("div");
-  var newContent = document.createTextNode("Boton"+" "+nombres[0].nombre);
-  var salto=document.createElement("br")
-
-  label.appendChild(canv)
-  label.appendChild(spa)
-  newDiv.appendChild(newContent); //añade texto al div creado.
- newDiv.appendChild(salto); //añade texto al div creado.
-  newDiv.appendChild(label); //añade texto al div creado.
-
-  // añade el elemento creado y su contenido al DOM
-  var currentDiv = document.getElementById("botons  ");
-  document.body.insertBefore(newDiv, currentDiv);
-
-        }
-
-
- 
-
-}
-  
-
-
-$( document ).ready(function() {
-
-
-  $.ajax({
-    url:'/accionadores',
-    method:'POST',
-    datatype:"JSON",
-    contentType: "application/json",
-    beforeSend: function(data){
-      console.log('Enviando...',data)
-    },
-
-
-  }).done(function(respuesta){
-
-
-    console.log('Respuesta recibida:',respuesta)
-    console.log(respuesta)
-   console.log(respuesta.length)
-   const numero = respuesta.length;
-   let nombres = respuesta;
-   console.log(numero);
-   crear(numero , nombres)
-
-
-}).fail(function(err){
-    console.log(err)
-    
-
-  }
-
-    )
-
- alert("documentolisto")
-});
-
-</script>
 
 </body>
 </html>

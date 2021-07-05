@@ -100,7 +100,7 @@ client.connect(function(err) {
 
 
 
-
+/*
 //FUNCION INSERTAR DOCUMENTO
 const insertDocuments = function(db, callback) {
   // Get the documents collection
@@ -131,7 +131,7 @@ const findDocuments = function(db, callback) {
 
   });
 }
-
+*/
 
 
 app.post("/registro",function(req,res)
@@ -154,12 +154,10 @@ collection.find({}).toArray(function(err, docs) {
 
   });
 
-
-
-
 }
 
   );
+
 
 
 app.post("/login",function(req,res)
@@ -204,31 +202,6 @@ res.send("True")
   );
 
 
-app.post("/accionadores",function(req,res)
-
-{
-
-const db = client.db(dbName);
-
-
-const collection = db.collection('accionadores');
-
-
-collection.find({}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    console.log("Found the following records");
-    console.log(docs)
-res.send(docs)
-  });
-
-console.log("peticion recibida")
-
-}
-
-  );
-
-
-
 app.post("/nodos",function(req,res)
 
 {
@@ -249,8 +222,6 @@ console.log("peticion recibida")
 }
 
   );
-
-
 
 
 
