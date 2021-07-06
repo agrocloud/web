@@ -96,11 +96,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-left animated wow fadeInRight" data-wow-delay=".5s">
-							<li ><a href="AccionadoresRiego.html">Accionadores Riego</a></li>
-							<li class="active"><a href="Caudalimetros.html">Caudalimetros</a></li>
-							<li><a href="Sensores.html">Sensores</a></li>
-							<li><a href="interface.html">Estadisticas</a></li>
-							<li ><a href="SoporteTecnico.html">Soporte Técnico</a></li>
+						
+							<li class="active"><a href="Caudalimetros.html">Centrales</a></li>
+				
+							<li><a href="interface.html">Base de datos</a></li>
+							<li ><a href="SoporteTecnico.html">Configuración</a></li>
 							<li><a href="index.html">Cerrar Sesión</a></li>
 						</ul>	
 							    <form class="navbar-form navbar-right" action="#" method="post">
@@ -276,82 +276,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script src="js/gauge.min.js">  </script> 
 
-<!--
-<canvas id="gauge1"></canvas>
--->
-
-
-<script>
-/*
-new RadialGauge({
-    renderTo: 'gauge1',
-    width: 400,
-    height: 400,
-    units: 'Km/h',
-    title: false,
-    value: 0,
-    minValue: 0,
-    maxValue: 220,
-    majorTicks: [
-        '0','20','40','60','80','100','120','140','160','180','200','220'
-    ],
-    minorTicks: 2,
-    strokeTicks: false,
-    highlights: [
-        { from: 0, to: 50, color: 'rgba(0,255,0,.15)' },
-        { from: 50, to: 100, color: 'rgba(255,255,0,.15)' },
-        { from: 100, to: 150, color: 'rgba(255,30,0,.25)' },
-        { from: 150, to: 200, color: 'rgba(255,0,225,.25)' },
-        { from: 200, to: 220, color: 'rgba(0,0,255,.25)' }
-    ],
-    colorPlate: '#222',
-    colorMajorTicks: '#f5f5f5',
-    colorMinorTicks: '#ddd',
-    colorTitle: '#fff',
-    colorUnits: '#ccc',
-    colorNumbers: '#eee',
-    colorNeedle: 'rgba(240, 128, 128, 1)',
-    colorNeedleEnd: 'rgba(255, 160, 122, .9)',
-    valueBox: true,
-    animationRule: 'bounce',
-    animationDuration: 500
-}).draw();
-*/
-
-/*new RadialGauge({ renderTo: "gauge3",width: 400,
-    height: 400, }).draw();
-      
-*/
-
-
-
-
-
-/*
-if (!window.addEventListener) {
-    window.addEventListener = function(evt, listener) {
-        window.attachEvent('on' + evt, listener);
-    };
-}
-if (!Array.prototype.forEach) {
-    Array.prototype.forEach = function(cb) {
-        var i = 0, s = this.length;
-        for (; i < s; i++) {
-            cb && cb(this[i], i, this);
-        }
-    }
-}
-*/
-
-
-
-</script>
-
- 
-
-
-
-
 
 
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
@@ -381,25 +305,175 @@ $( document ).ready(function() {
 
     console.log('Respuesta recibida:',respuesta)
     console.log(respuesta)
-   console.log(respuesta.length)
+    console.log(respuesta.length)
  
    //console.log(numero);
 
    
 
 for ( var item = 0; item < numero ; item++) {
+
+
+var newContent1 = document.createTextNode("ON");
+var newContent2 = document.createTextNode("OFF");
+
+ var check= document.createElement("input");
+            check.setAttribute('type', "checkbox")
+
+
+            var label=document.createElement("label")
+            label.setAttribute('id' , "sliderLabel")
+
+
+             var spa=document.createElement("span")
+               var spa2=document.createElement("span")
+
+
+               spa2.setAttribute('id',"sliderOn")
+               spa2.appendChild(newContent1)
+
+
+                 var spa3=document.createElement("span")
+                 spa3.setAttribute('id',"sliderOff")
+                 spa3.appendChild(newContent2)
+                 var spa4=document.createElement("span")
+                 spa4.setAttribute('id',"sliderBlock")
+
+
+             spa.setAttribute('id',"slider")
+             spa.appendChild(spa2)
+             spa.appendChild(spa3)
+             spa.appendChild(spa4)
+
+             label.appendChild(check)
+             label.appendChild(spa)
+
            
+
             var canv = document.createElement("canvas");
+            
+            var division= document.createElement("div");
+            division.setAttribute("style" , "float: left")
+
+
+
+           
+
+            var salto= document.createElement("br")
+            var porte= document.createElement("h1")
+
+
+            var newContent3 = document.createTextNode(respuesta[item].id);
+            porte.appendChild(newContent3)
+            
+
+
+
+            document.body.appendChild(division)
+
+               
             canv.setAttribute('width', 500);
             canv.setAttribute('height', 500);
 
             canv.setAttribute('id', item);
-            document.body.appendChild(canv);
+            //document.body.appendChild(canv);
 
             canales.push(nombres[item].id)
             //console.log(canales);
+           
+
+
+
+
+
+ // Obtener la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < 3; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 1; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+     // var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      //celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+
+
+     if(i==0)
+     {
+
+     var textoCelda = document.createTextNode(respuesta[item].id);
+     celda.appendChild(textoCelda);
+     
+     }
+
+
+if(i==1)
+     {
+
+     var textoCelda = document.createTextNode("");
+     celda.appendChild(textoCelda);
+      celda.appendChild(canv)
+      celda.appendChild(textoCelda);
+
+     }
+
+
+if(i==2)
+     {
+
+     celda.appendChild(label)
+
+     }
+
+
+
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+
+
+
+ 
+
+
+    //division.appendChild(label);
+    division.appendChild(tabla)
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    comu(canales,numero);
 
@@ -475,6 +549,7 @@ console.log(canales);
 
 
 var gauges=[];
+
 for ( var item = 0; item < numero ; item++) {
 
  client.subscribe(canales[item], { qos: 0 })
@@ -498,10 +573,6 @@ client.on('message', (topic, message, packet) => {
 var msn=message.toString();
 
 console.log(canales[0])
-
-
-
-
 for ( var item = 0; item < numero ; item++) {
 
  if(topic.toString()==canales[item])
@@ -517,66 +588,123 @@ for ( var item = 0; item < numero ; item++) {
 
 
 
-<div id="botons">
-</div>
-
-<script type="text/javascript">
-
-
-for (var item = 0; item < 20; item++) {
-
-var newContent1 = document.createTextNode("ON");
-var newContent2 = document.createTextNode("OFF");
-
-
-            var label=document.createElement("label")
-            label.setAttribute('id' , "sliderLabel")
-
-
-             var spa=document.createElement("span")
-               var spa2=document.createElement("span")
-
-
-               spa2.setAttribute('id',"sliderOn")
-               spa2.appendChild(newContent1)
-
-
-                 var spa3=document.createElement("span")
-                 spa3.setAttribute('id',"sliderOff")
-                 spa3.appendChild(newContent2)
-                 var spa4=document.createElement("span")
-                 spa4.setAttribute('id',"sliderBlock")
-
-
-             spa.setAttribute('id',"slider")
-             spa.appendChild(spa2)
-             spa.appendChild(spa3)
-             spa.appendChild(spa4)
-
-
-            var canv = document.createElement("input");
-            canv.setAttribute('type', "checkbox")
-            canv.setAttribute('id', item);
-            canv.setAttribute('onclick', "reply_click(this.id)");
-
-
-
-  var newDiv = document.createElement("div");
-  var newContent = document.createTextNode("Boton"+" ");
-  var salto=document.createElement("br")
-
-  label.appendChild(canv)
-  label.appendChild(spa)
-  newDiv.appendChild(newContent); //añade texto al div creado.
- newDiv.appendChild(salto); //añade texto al div creado.
-  newDiv.appendChild(label); //añade texto al div creado.
-
-  // añade el elemento creado y su contenido al DOM
-  var currentDiv = document.getElementById("botons  ");
- // document.body.insertBefore(newDiv, currentDiv);
-
-        }
-        
-</script>
 </body>
+</html>
+
+
+
+<!--
+<canvas id="gauge1"></canvas>
+-->
+
+
+<script>
+/*
+new RadialGauge({
+    renderTo: 'gauge1',
+    width: 400,
+    height: 400,
+    units: 'Km/h',
+    title: false,
+    value: 0,
+    minValue: 0,
+    maxValue: 220,
+    majorTicks: [
+        '0','20','40','60','80','100','120','140','160','180','200','220'
+    ],
+    minorTicks: 2,
+    strokeTicks: false,
+    highlights: [
+        { from: 0, to: 50, color: 'rgba(0,255,0,.15)' },
+        { from: 50, to: 100, color: 'rgba(255,255,0,.15)' },
+        { from: 100, to: 150, color: 'rgba(255,30,0,.25)' },
+        { from: 150, to: 200, color: 'rgba(255,0,225,.25)' },
+        { from: 200, to: 220, color: 'rgba(0,0,255,.25)' }
+    ],
+    colorPlate: '#222',
+    colorMajorTicks: '#f5f5f5',
+    colorMinorTicks: '#ddd',
+    colorTitle: '#fff',
+    colorUnits: '#ccc',
+    colorNumbers: '#eee',
+    colorNeedle: 'rgba(240, 128, 128, 1)',
+    colorNeedleEnd: 'rgba(255, 160, 122, .9)',
+    valueBox: true,
+    animationRule: 'bounce',
+    animationDuration: 500
+}).draw();
+*/
+
+/*new RadialGauge({ renderTo: "gauge3",width: 400,
+    height: 400, }).draw();
+      
+*/
+
+
+
+
+
+/*
+if (!window.addEventListener) {
+    window.addEventListener = function(evt, listener) {
+        window.attachEvent('on' + evt, listener);
+    };
+}
+if (!Array.prototype.forEach) {
+    Array.prototype.forEach = function(cb) {
+        var i = 0, s = this.length;
+        for (; i < s; i++) {
+            cb && cb(this[i], i, this);
+        }
+    }
+}
+*/
+
+
+
+</script>
+<!--
+<input type="button" value="Genera una tabla" onclick="genera_tabla()">
+-->
+<script>
+
+
+    function genera_tabla() {
+  // Obtener la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < 2; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 2; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+}
+    </script>
+</body>
+
+
 </html>
