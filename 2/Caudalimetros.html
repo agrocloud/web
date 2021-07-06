@@ -554,8 +554,8 @@ for ( var item = 0; item < numero ; item++) {
 
  client.subscribe(canales[item], { qos: 0 })
           
-gauges[item] = new RadialGauge({ renderTo: item.toString() ,width: 400,
-    height: 400, id:item}).draw()
+gauges[item] = new RadialGauge({ renderTo: item.toString() ,width: 350,
+    height: 350, id:item}).draw()
 
 
         }

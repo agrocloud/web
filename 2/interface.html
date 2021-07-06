@@ -24,10 +24,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
-
-
-
-
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -104,9 +100,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<ul class="nav navbar-nav navbar-left animated wow fadeInRight" data-wow-delay=".5s">
 						
 							<li><a href="Caudalimetros.html">Centrales</a></li>
-							
 							<li class="active"><a href="">Base de datos</a></li>
-							<li ><a href="SoporteTecnico.html">Soporte Técnico</a></li>
+							<li ><a href="SoporteTecnico.html">Configuración</a></li>
 							<li><a href="index.html">Cerrar Sesión</a></li>
 						</ul>	
 							    <form class="navbar-form navbar-right" action="#" method="post">
@@ -135,95 +130,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="banner-1">
 
 
-
-<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css"/>
-
-    <style>
-        .tabBlock
-        {
-            background-color:#57574f;
-            border:solid 0px #FFA54F;
-            border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
-            max-width:200px;
-            width:100%;
-            overflow:hidden;
-            display:block;
-        }
-        .clock
-        {
-            vertical-align:middle;
-            font-family:Orbitron;
-            font-size:40px;
-            font-weight:normal;
-            color:#FFF;
-            padding:0 10px;
-        }
-        .clocklg 
-        {
-            vertical-align:middle; 
-            font-family:Orbitron;
-            font-size:20px;
-            font-weight:normal;
-            color:#FFF;
-        }
-    </style>
-</head>
-
-<!-- ON LOAD OF THE PAGE, THE CLOCK WILL START TICKING. -->
-<body onload="digitized();">
-    <div style="
-        max-width:300px;width:120%;margin:0 auto;padding:20px;">
-
-        <table class="tabBlock" align="center" cellspacing="0" cellpadding="0" border="0">
-            <tr><td class="clock" id="dc"></td>  <!-- THE DIGITAL CLOCK. -->
-                <td>
-                    <table cellpadding="0" cellspacing="0" border="0">
-                    
-                        <!-- HOUR IN 'AM' AND 'PM'. -->
-                        <tr><td class="clocklg" id="dc_hour"></td></tr>
-
-                        <!-- SHOWING SECONDS. -->
-                        <tr><td class="clocklg" id="dc_second"></td></tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
-
-<script>
-    // OUR FUNCTION WHICH IS EXECUTED ON LOAD OF THE PAGE.
-    function digitized() {
-        var dt = new Date();    // DATE() CONSTRUCTOR FOR CURRENT SYSTEM DATE AND TIME.
-        var hrs = dt.getHours();
-        var min = dt.getMinutes();
-        var sec = dt.getSeconds();
-
-        min = Ticking(min);
-        sec = Ticking(sec);
-
-        document.getElementById('dc').innerHTML = hrs + ":" + min;
-        document.getElementById('dc_second').innerHTML = sec;
-
-        if (hrs > 12) { 
-            document.getElementById('dc_hour').innerHTML = 'PM'; 
-        }
-        else { 
-            document.getElementById('dc_hour').innerHTML = 'AM'; 
-        }
-
-        // CALL THE FUNCTION EVERY 1 SECOND (RECURSION).
-        var time
-        time = setInterval('digitized()', 1000);
-    }
-
-    function Ticking(ticVal) {
-        if (ticVal < 10) {
-            ticVal = "0" + ticVal;
-        }
-        return ticVal;
-    }
-</script>
 
 </div>
 
@@ -282,6 +188,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </style>
 
 
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
 
 
 
@@ -303,6 +233,373 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
+
+
+
+
+
+
+
+
+<script>
+
+$( document ).ready(function() {
+
+
+  $.ajax({
+    url:'/nodos',
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+   const numero = respuesta.length;
+   let nombres = respuesta;
+   console.log(numero);
+
+
+var texto = document.createTextNode("Nombre");
+
+ var texto2 = document.createTextNode("Sector");
+
+ var texto3 = document.createTextNode("Estado");
+
+ var tabla = document.createElement("table");
+ tabla.setAttribute("id","customers");
+
+
+
+
+ var fila = document.createElement("tr");
+
+ var nombre = document.createElement("th");
+
+ nombre.appendChild(texto);
+
+ var sector = document.createElement("th");
+ 
+ sector.appendChild(texto2);
+
+
+ var estado = document.createElement("th");
+
+ estado.appendChild(texto3);
+
+ fila.appendChild(nombre);
+ fila.appendChild(sector);
+ fila.appendChild(estado);
+ tabla.appendChild(fila);
+
+
+for ( var item = 0; item < numero ; item++) {
+
+console.log("hola")
+
+var texto4 = document.createTextNode(respuesta[item].id);
+
+ var texto5 = document.createTextNode(respuesta[item].Sector);
+
+ var texto6 = document.createTextNode(respuesta[item].Estado);
+
+var fila2 = document.createElement("tr")
+fila2.setAttribute("id",item)
+fila2.setAttribute("onclick","row(this.id)")
+;
+var name  = document.createElement("td");
+name.appendChild(texto4);
+var ubic  = document.createElement("td");
+ubic.appendChild(texto5);
+var estate = document.createElement("td");
+estate.appendChild(texto6);
+
+fila2.appendChild(name);
+
+fila2.appendChild(ubic);
+
+fila2.appendChild(estate);
+
+tabla.appendChild(fila2);
+
+
+        }
+
+
+ document.body.appendChild(tabla);
+  
+
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+
+ alert("documentolisto")
+});
+
+function row(id)
+{
+
+
+
+//alert("click"+id);
+  modal.style.display = "block";
+
+}
+
+</script>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+</style>
+
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Especificaciones</h2>
+    </div>
+    <div class="modal-body">
+      <head>
+
+</head>
+<body>
+
+<h2>Horizontal Headings:</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Telephone</th>
+    <th>Telephone</th>
+  </tr>
+  <tr>
+    <td>Bill Gates</td>
+    <td>555 77 854</td>
+    <td>555 77 855</td>
+  </tr>
+</table>
+
+<h2>Vertical Headings:</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Name:</th>
+    <td>Bill Gates</td>
+  </tr>
+  <tr>
+    <th>Telephone:</th>
+    <td>555 77 854</td>
+  </tr>
+  <tr>
+    <th>Telephone:</th>
+    <td>555 77 855</td>
+  </tr>
+</table>
+
+</body>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+
+
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<!--
+
+<div class="footer">
+	<div class="container">
+		<div class="footer-main">
+		    <div class="col-md-3 ftr-grid animated wow fadeInLeft" data-wow-delay=".5s">
+		    	<h3>Contacto</h3>
+		    	<p>Whassap Ventas y Ascesorias : +56948003699
+		    	   Email Contacto : agrocloud.tec@gmail.com</p>
+		    </div>
+
+</body>
+</html>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <div  class="Div">
 <canvas id="myChart" width="0.5" height="200" ></canvas>
 
@@ -324,8 +621,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 </div>
-
-
+-->
+<!--
 <script>
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
@@ -402,6 +699,9 @@ var myChart = new Chart(ctx, {
 });
 </script>
 
+
+
+
 <script>
 var ctx = document.getElementById('myChart3');
 var myChart = new Chart(ctx, {
@@ -441,10 +741,10 @@ var myChart = new Chart(ctx, {
 </script>
 
 
+-->
 
 
-
-
+<!--
 
 
 <div class="row">
@@ -480,21 +780,6 @@ var myChart = new Chart(ctx, {
     </div>
   </div>
 </div>
-
+-->
 
  
-
-
-
-<!--footer-->
-<div class="footer">
-	<div class="container">
-		<div class="footer-main">
-		    <div class="col-md-3 ftr-grid animated wow fadeInLeft" data-wow-delay=".5s">
-		    	<h3>Contacto</h3>
-		    	<p>Whassap Ventas y Ascesorias : +56948003699
-		    	   Email Contacto : agrocloud.tec@gmail.com</p>
-		    </div>
-
-</body>
-</html>
