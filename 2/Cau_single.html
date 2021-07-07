@@ -1,0 +1,662 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Greenery a Agriculture Category Flat Bootstrap Responsive Website Template | Typo :: w3layouts</title>
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="css/lightbox.css">
+<link href="css/login.css" type="text/css" rel="stylesheet" media="all">
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.0/chart.js"></script>
+
+
+
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Greenery Responsive Web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web template, 
+	Smartphone Compatible Web template, free Webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola Web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<!-- js -->
+
+
+
+
+
+<script src="js/jquery-1.11.1.min.js"></script> 
+   <script src="js/bootstrap.js"></script>
+<!-- //js -->
+<!-- banner-text Slider starts Here -->
+		<script src="js/responsiveslides.min.js"></script>
+		 <script>
+			// You can also use "$(window).load(function() {"
+				$(function () {
+				// Slideshow 3
+					$("#slider3").responsiveSlides({
+					auto: true,
+					pager:true,
+					nav:true,
+					speed: 500,
+					namespace: "callbacks",
+					before: function () {
+					$('.events').append("<li>before event fired.</li>");
+					},
+					after: function () {
+						$('.events').append("<li>after event fired.</li>");
+					}
+				});	
+			});
+		</script>
+		<!--//End-slider-script -->
+</head>
+
+<body>
+<!--header-->
+	<div class="header">
+	</div>
+<!--//header-->
+<!--navigation-->
+		<div class="top-nav">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+
+
+
+
+
+                      <img src="images/captura2.png" class="img-responsive" alt="">
+						</div>
+				
+
+
+
+
+
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left animated wow fadeInRight" data-wow-delay=".5s">
+						
+							<li class="active"><a href="Caudalimetros.html">Monitor</a></li>
+				
+							<li><a href="interface.html">Centrales</a></li>
+							<li ><a href="SoporteTecnico.html">Base de</a></li>
+							<li><a href="index.html">Cerrar Sesión</a></li>
+						</ul>	
+							    <form class="navbar-form navbar-right" action="#" method="post">
+								<div class="form-group">
+							
+							<!--
+									<input type="text" class="form-control" placeholder="Search">
+									<button type="submit" class="btn btn-default" aria-label="Right Align">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+									</button>
+									-->
+								
+								</div>
+							</form>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>	
+			</div>			
+		</div>	
+<!--navigation-->
+
+
+
+	<div class="banner-1" id="banner">
+
+
+
+</div>
+
+
+
+
+
+<style>
+
+
+.Div {
+  border: 5px outset black;
+  background-color: whitesmoke;
+}
+
+.* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}
+
+.fa {font-size:50px;}
+
+</style>
+
+
+<style>
+#sliderLabel {
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+    display: inline-block;
+}
+
+#sliderLabel input {
+    display: none;
+}
+
+#sliderLabel input:checked + #slider {
+    left: 0px;
+}
+
+#slider {
+    left: -50px;
+    position: absolute;
+    top: 0px;
+    -webkit-transition: left .25s ease-out;
+    -moz-transition: left .25s ease-out;
+    -o-transition: left .25s ease-out;
+    -ms-transition: left .25s ease-out;
+    transition: left .25s ease-out;
+}
+
+#sliderOn,
+#sliderBlock,
+#sliderOff {
+    display: block;
+    font-family: arial, verdana, sans-serif;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+}
+
+#sliderOn {
+    background: #3269aa;
+    background: -webkit-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -moz-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -o-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -ms-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    color: white;
+    left: 0px;
+    width: 54px;
+}
+
+#sliderBlock {
+    background: #d9d9d8;
+    background: -webkit-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -moz-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -o-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -ms-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 28px;
+    left: 50px;
+    width: 50px;
+}
+
+#sliderOff {
+    background: #f2f3f2;
+    background: -webkit-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -moz-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -o-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -ms-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    color: #8b8b8b;
+    left: 96px;
+    width: 54px;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="js/gauge.min.js">  </script> 
+
+
+
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+$( document ).ready(function() {
+
+
+
+var jsarray = JSON.parse(sessionStorage.getItem("jsArray"));
+
+console.log(jsarray);
+
+
+
+
+var respuesta = jsarray; 
+
+
+
+
+var newContent1 = document.createTextNode("ON");
+var newContent2 = document.createTextNode("OFF");
+
+ var check= document.createElement("input");
+            check.setAttribute('type', "checkbox")
+
+
+            var label=document.createElement("label")
+            label.setAttribute('id' , "sliderLabel")
+
+
+             var spa=document.createElement("span")
+               var spa2=document.createElement("span")
+
+
+               spa2.setAttribute('id',"sliderOn")
+               spa2.appendChild(newContent1)
+
+
+                 var spa3=document.createElement("span")
+                 spa3.setAttribute('id',"sliderOff")
+                 spa3.appendChild(newContent2)
+                 var spa4=document.createElement("span")
+                 spa4.setAttribute('id',"sliderBlock")
+
+
+             spa.setAttribute('id',"slider")
+             spa.appendChild(spa2)
+             spa.appendChild(spa3)
+             spa.appendChild(spa4)
+
+             label.appendChild(check)
+             label.appendChild(spa)
+
+           
+
+            var canv = document.createElement("canvas");
+            
+            var division= document.createElement("div");
+            division.setAttribute("style" , "float: left")
+
+
+
+           
+
+            var salto= document.createElement("br")
+            var porte= document.createElement("h1")
+
+
+            var newContent3 = document.createTextNode(respuesta.id);
+            porte.appendChild(newContent3)
+            
+
+
+
+            document.body.appendChild(division)
+
+               
+            canv.setAttribute('width', 500);
+            canv.setAttribute('height', 500);
+
+            canv.setAttribute('id', respuesta.id);
+            //document.body.appendChild(canv);
+
+     
+
+
+ // Obtener la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < 3; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 1; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+     // var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      //celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+
+
+     if(i==0)
+     {
+
+     var textoCelda = document.createTextNode(respuesta.id);
+     celda.appendChild(textoCelda);
+     
+     }
+
+
+if(i==1)
+     {
+
+     var textoCelda = document.createTextNode("");
+     celda.appendChild(textoCelda);
+      celda.appendChild(canv)
+      celda.appendChild(textoCelda);
+
+     }
+
+
+if(i==2)
+     {
+
+     celda.appendChild(label)
+
+     }
+
+
+
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+
+
+
+ 
+
+
+    //division.appendChild(label);
+    division.appendChild(tabla)
+
+
+
+
+   //comu(canales,numero);
+
+//console.log(canales);
+
+ alert("Descargando información del usuario")
+
+
+comu(jsarray);
+
+});
+
+
+
+
+
+
+
+function comu(jsarray)
+{
+
+console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaa")
+const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+
+
+const host = 'ws://192.168.43.42:9001'
+
+const options = {
+  keepalive: 60,
+  clientId: clientId,
+  protocolId: 'MQTT',
+  protocolVersion: 4,
+  clean: true,
+  reconnectPeriod: 1000,
+  connectTimeout: 30 * 1000,
+  will: {
+    topic: 'WillMsg',
+    payload: 'Connection Closed abnormally..!',
+    qos: 0,
+    retain: false
+  },
+}
+
+
+console.log('Connecting mqtt client')
+const client = mqtt.connect(host, options)
+
+client.on('error', (err) => {
+  console.log('Connection error: ', err)
+  //client.end()
+})
+
+client.on('reconnect', () => {
+  console.log('Reconnecting...')
+})
+
+
+
+client.on('connect', () => {
+  console.log('Client connected:' + clientId)
+  // Subscribe
+
+  
+})
+
+
+
+ client.subscribe(jsarray.id);
+          
+var gauge1 = new RadialGauge({ renderTo: jsarray.id ,width: 350,
+    height: 350, id:jsarray.id}).draw()
+
+
+
+client.on('message', (topic, message, packet) => {
+  console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+  
+var msn=message.toString();
+
+ 	gauge1.value = parseInt(msn)
+
+})
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+    function genera_tabla() {
+  // Obtener la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < 2; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 2; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+}
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+</body>
+<div  class="Div">
+<canvas id="myChart" width="0.5" height="200" ></canvas>
+
+</div>
+
+
+</div>
+
+<script>
+var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: 'Ultimas temperaturas 24 Hrs',
+            data: [-2, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3, 6, 12, 14, 16, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+-->
+</html>
