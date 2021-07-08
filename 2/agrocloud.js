@@ -100,7 +100,7 @@ client.connect(function(err) {
 
 
 
-/*
+
 //FUNCION INSERTAR DOCUMENTO
 const insertDocuments = function(db, callback) {
   // Get the documents collection
@@ -131,7 +131,7 @@ const findDocuments = function(db, callback) {
 
   });
 }
-*/
+
 
 
 app.post("/registro",function(req,res)
@@ -224,35 +224,59 @@ console.log("peticion recibida")
   );
 
 
+app.post("/database",function(req,res)
+
+{
+
+const db = client.db(dbName);
+
+
+const collection = db.collection('nodo1');
+
+collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+res.send(docs)
+  });
+
+console.log("peticion recibida")
+}
+
+  );
+
+
+
+
+
+
+
+
 
 var mqtt = require('mqtt')
-var client2  = mqtt.connect('mqtt://localhost:1883')
+var client2  = mqtt.connect('mqtt://192.168.43.42:1883')
  
 client2.on('connect', function () {
-
-
   client2.subscribe('nodo1', function (err) {
     if (!err) {
-      client2.publish('nodo1', 'pico')
+      client2.publish('nodo1', 'Hello mqtt')
     }
   })
-
-   client2.subscribe('nodo2', function (err) {
-    if (!err) {
-      client2.publish('nodo2', 'pico')
-    }
-  })
-
-  
 })
  
 client2.on('message', function (topic, message) {
   // message is Buffer
   console.log(message.toString())
+const db = client.db(dbName);
+    const collection = db.collection('nodo1');
+  // Insert some documents
+  collection.insertOne({lectura:message.toString(),fecha: new Date()});
+
 
 })
 
 
+ 
 
 
 
