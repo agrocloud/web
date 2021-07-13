@@ -236,43 +236,6 @@
 
 
 
-<!--
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <p><i class="fa fa-user"></i></p>
-      <h3>11+</h3>
-      <p>Litros Consumidos</p>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <p><i class="fa fa-check"></i></p>
-      <h3>55+</h3>
-      <p>Temperatura Max/Min</p>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <p><i class="fa fa-smile-o"></i></p>
-      <h3>100+</h3>
-      <p>Humedad Max/Min</p>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <p><i class="fa fa-coffee"></i></p>
-      <h3>100+</h3>
-      <p>Caudal Prom</p>
-    </div>
-  </div>
-</div>
--->
-
-
 
 
 
@@ -301,9 +264,12 @@
 
 $( document ).ready(function() {
 
+var jsarray = JSON.parse(sessionStorage.getItem("jsArray"));
+
+console.log(jsarray);
 
   $.ajax({
-    url:'/database',
+    url: jsarray.id,
     method:'POST',
     datatype:"JSON",
     contentType: "application/json",
@@ -341,7 +307,7 @@ for ( var item = 0; item < numero ; item++) {
 
 
 lecturas.push(respuesta[item].lectura)
-fechas.push(respuesta[item].fecha)
+fechas.push(item)
 
 
         }
@@ -390,45 +356,6 @@ var myChart = new Chart(ctx, {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $('#table').bootstrapTable({ pagination: true,
   search: true,
   columns: [{
@@ -440,7 +367,7 @@ $('#table').bootstrapTable({ pagination: true,
   }, {
     field: '_id',
     title: 'Item Price'
-  }],data: respuesta
+  }],data: respuesta.reverse()
   
 })
 
@@ -737,9 +664,39 @@ var msn=message.toString();
 }
 
 </script>
+<div class="footer">
+  <div class="container">
+    <div class="footer-main">
+        <div class="col-md-3 ftr-grid animated wow fadeInLeft" data-wow-delay=".5s">
+          <h3>Contacto</h3>
+          <p>Whassap Ventas y Ascesorias : +56948003699
+             Email Contacto : agrocloud.tec@gmail.com</p>
+        </div>
 
+        </div>
+
+        </div>
+
+        </div>
 
 </body>
+
+
+
+<style>
+.footer {
+    left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: cafe;
+  color: white;
+  text-align: center;
+}
+</style>
+
+</body>
+
+
 </html>
 
 </html>
