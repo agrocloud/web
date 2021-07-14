@@ -400,8 +400,8 @@ var newContent2 = document.createTextNode("OFF");
 
  var check= document.createElement("input");
             check.setAttribute('type', "checkbox")
-            check.setAttribute('id', respuesta[item].id)
-
+            check.setAttribute('id', respuesta[item].id+"A")
+             check.setAttribute('onchange', "doalert(this)")
 
             var label=document.createElement("label")
             label.setAttribute('id' , "sliderLabel")
@@ -439,7 +439,8 @@ var newContent4 = document.createTextNode("OFF");
 
  var check2= document.createElement("input");
             check2.setAttribute('type', "checkbox")
-            check2.setAttribute('id', respuesta[item].id)
+            check2.setAttribute('id', respuesta[item].id+"B")
+             check2.setAttribute('onchange', "doalert(this)")
 
 
             var label2=document.createElement("label")
@@ -468,9 +469,6 @@ var newContent4 = document.createTextNode("OFF");
 
              label2.appendChild(check2)
              label2.appendChild(spo)
-
-
-
 
 
 
@@ -751,6 +749,23 @@ for ( var item = 0; item < numero ; item++) {
 
 </script>
 
+<script>
+
+
+
+
+function doalert(checkboxElem) {
+  if (checkboxElem.checked) {
+    alert ("hi");
+  } else {
+    alert ("bye");
+  }
+}
+
+</script>
+
+
+
 
 <style>
 .button {
@@ -1025,7 +1040,27 @@ window.onclick = function(event) {
 
 
 
+<script>
+function checkCheckbox() {  
+  var yes = document.getElementById("myCheck1");  
+  var no = document.getElementById("myCheck2");  
+  if (yes.checked == true && no.checked == true){  
+    return document.getElementById("error").innerHTML = "Please mark only one checkbox either Yes or No";  
+  }  
+  else if (yes.checked == true){  
+    var y = document.getElementById("myCheck1").value;  
+    return document.getElementById("result").innerHTML = y;   
+  }   
+  else if (no.checked == true){  
+    var n = document.getElementById("myCheck2").value;  
+    return document.getElementById("result").innerHTML = n;  
+  }  
+  else {  
+    return document.getElementById("error").innerHTML = "*Please mark any of checkbox";  
+  }  
+}  
 
+</script>
 
 
 
