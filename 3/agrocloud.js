@@ -202,6 +202,25 @@ res.send("True")
   );
 
 
+app.post("/crearcentral",function(req,res)
+
+{
+
+
+console.log(req.body.id.toString())
+
+const db = client.db(dbName);
+    const collection = db.collection('nodos');
+
+  collection.insertOne({id:req.body.id.toString(),Sector:req.body.Sector.toString(),Estado:req.body.Estado.toString()});
+
+
+}
+
+  );
+
+
+
 app.post("/nodos",function(req,res)
 
 {
@@ -279,6 +298,22 @@ console.log("peticion recibida")
 
 
 
+app.post("/limpiar",function(req,res)
+
+{
+
+const db = client.db(dbName);
+
+
+const collection = db.collection('nodo1');
+collection.deleteMany({});
+
+
+
+console.log("peticion recibida")
+}
+
+  );
 
 
 var mqtt = require('mqtt')
@@ -345,8 +380,11 @@ const db = client.db(dbName);
 })
 
 
- 
 
+
+
+
+ 
 
 
 

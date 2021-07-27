@@ -11,11 +11,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
-    <!-- Bootstrap core CSS -->
-    <link href="./Starter Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="./Starter Template for Bootstrap_files/starter-template.css" rel="stylesheet">
   </head>
 
   <body>
@@ -28,16 +23,44 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+
+
          <li class="nav-item">
+
             <a class="nav-link" href="monitor.html">Monitor</a>
+
           </li>
+
+
           <li class="nav-item active">
-            <a class="nav-link" href="monitor.html">Centrales</a>
+
+           <a class="nav-link" href="monitor.html">Centrales</a>
+
+
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Base de datos</a>
+            
+
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/Registro_Centrales.html">Agregar Central</a>
+          <a class="dropdown-item" href="/Registro_Usuarios.html">Agregar Usuario</a>
+          <div class="dropdown-divider"></div>
+          <!--
+          <a class="dropdown-item" href="#">Ver Canales</a>
+        -->
+        </div>
+
+
+      </li>
+              
+    <li class="nav-item">
+            <a class="nav-link" href="/index.html">Cerrar Sesión</a>
           </li>
-        
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -88,7 +111,6 @@
 
 <script src="js/jquery-1.11.1.min.js"></script> 
 
-<script src="js/bootstrap.js"></script>
 
 
 <script src="js/gauge.min.js">  </script> 
@@ -102,7 +124,7 @@
 
 
 
-<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+
 
 
 <link href="css/login.css" type="text/css" rel="stylesheet" media="all">
@@ -131,30 +153,8 @@
       <span class="close">&times;</span>
       <h2>Modal Header</h2>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" id="ventana">
      
-
-
-
-<body>
-
-<h2>Información General</h2>
-
-<table style="width:100%">
-  <tr>
-    <th>Nombre de la Central</th>
-    <th>Sector</th>
-    <th>Estado de la conexión</th>
-  </tr>
-  <tr>
-    <td id="nom"></td>
-    <td id="sector"></td>
-    <td id="estatus"></td>
-  </tr>
-</table>
-
-
-</body>
 
 
 
@@ -167,12 +167,37 @@
 
 
     </div>
+
     <div class="modal-footer">
       <h3>Modal Footer</h3>
     </div>
   </div>
 
 </div>
+
+
+
+
+<link rel="stylesheet" href="./simplepicker_ Material Inspired Date &amp; Time Picker Example_files/simplepicker.css">
+
+
+  <style>
+  body { font-family: 'Roboto'; }
+    .event-log {
+      font-family: consolas, Monaco, monospace;
+      margin: 10px 5px;
+      line-height: 2;
+      border: 1px solid #4c4c4c;
+      height: auto;
+      width: 90%;
+      padding: 2px 6px;
+      color: #4c4c4c;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
 
 
 </body>
@@ -190,6 +215,24 @@
 
 
 
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+
+</style>
 
 <script src="js/gauge.min.js">  </script> 
 
@@ -262,14 +305,367 @@ $('#table').bootstrapTable({
   onClickRow:function (row,$element) {
 
 
+$( document ).ready(function() {
+
+
+  $.ajax({
+    url:'/nodos',
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+    const numero = respuesta.length;
+    let nombres = respuesta;
+    const canales=[];
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+    console.log(respuesta.length)
+ 
+   //console.log(numero);
+
+   
+
+for ( var item = 0; item < 1 ; item++) {
+
+
+//botón 1
+var newContent1 = document.createTextNode("ON");
+var newContent2 = document.createTextNode("OFF");
+
+ var check= document.createElement("input");
+            check.setAttribute('type', "checkbox")
+            check.setAttribute('id',"A")
+             check.setAttribute('onchange', "doalert(this)")
+
+            var label=document.createElement("label")
+            label.setAttribute('id' , "sliderLabel")
+
+
+             var spa=document.createElement("span")
+               var spa2=document.createElement("span")
+
+
+               spa2.setAttribute('id',"sliderOn")
+               spa2.appendChild(newContent1)
+
+
+                 var spa3=document.createElement("span")
+                 spa3.setAttribute('id',"sliderOff")
+                 spa3.appendChild(newContent2)
+                 var spa4=document.createElement("span")
+                 spa4.setAttribute('id',"sliderBlock")
+
+
+             spa.setAttribute('id',"slider")
+             spa.appendChild(spa2)
+             spa.appendChild(spa3)
+             spa.appendChild(spa4)
+
+             label.appendChild(check)
+             label.appendChild(spa)
+
+           
+
+//boton2
+
+var newContent3 = document.createTextNode("ON");
+var newContent4 = document.createTextNode("OFF");
+
+ var check2= document.createElement("input");
+            check2.setAttribute('type', "checkbox")
+            check2.setAttribute('id',"B")
+             check2.setAttribute('onchange', "doalert(this)")
+
+
+            var label2=document.createElement("label")
+            label2.setAttribute('id' , "sliderLabel")
+
+
+             var spo=document.createElement("span")
+               var spo2=document.createElement("span")
+
+
+               spo2.setAttribute('id',"sliderOn")
+               spo2.appendChild(newContent3)
+
+
+                 var spo3=document.createElement("span")
+                 spo3.setAttribute('id',"sliderOff")
+                 spo3.appendChild(newContent4)
+                 var spo4=document.createElement("span")
+                 spo4.setAttribute('id',"sliderBlock")
+
+
+             spo.setAttribute('id',"slider")
+             spo.appendChild(spo2)
+             spo.appendChild(spo3)
+             spo.appendChild(spo4)
+
+             label2.appendChild(check2)
+             label2.appendChild(spo)
+
+
+
+            var canv = document.createElement("canvas");
+            
+            var division= document.createElement("div");
+            division.setAttribute("style" , "float: left")
+
+
+
+           
+
+            var salto= document.createElement("br")
+            var porte= document.createElement("h1")
+
+
+            var newContent3 = document.createTextNode("respuesta[item].id");
+            porte.appendChild(newContent3)
+            
+
+
+
+            document.body.appendChild(division)
+
+               
+            canv.setAttribute('width', 500);
+            canv.setAttribute('height', 500);
+
+            canv.setAttribute('id', "hola");
+  
+           
+
+
+
+
+
+ // Obtener la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < 8; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 1; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+     // var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      //celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+
+
+     if(i==0)
+     {
+
+     var textoCelda = document.createTextNode(respuesta[item].id);
+     celda.appendChild(textoCelda);
+     
+     }
+
+
+if(i==1)
+     {
+
+     var textoCelda = document.createTextNode("");
+     celda.appendChild(textoCelda);
+      celda.appendChild(canv)
+      celda.appendChild(textoCelda);
+
+     }
+
+
+if(i==2)
+     {
+
+        var textoCelda2 = document.createTextNode("Accionador A");
+     celda.appendChild(textoCelda2);
+
+     
+
+     }
+
+
+if(i==3)
+     {
+
+      
+     celda.appendChild(label)
+
+     }
+
+
+if(i==4)
+     {
+
+        var textoCelda3 = document.createTextNode("Accionador B");
+     celda.appendChild(textoCelda3);
+
+     
+
+     }
+
+
+if(i==5)
+     {
+
+      
+     celda.appendChild(label2)
+
+
+
+     }
+
+if(i==6)
+     {
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir1(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Especificaciones");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+     
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir2(this.id)")
+
+
+
+   var textoCelda3 = document.createTextNode("Lecturas");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+
+ 
+
+     }
+     if(i==7)
+
+     {
+
+  var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Programación");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Editar");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+     }
+
+
+
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+
+
+    //division.appendChild(label);
+    var ubi=document.getElementById("ventana")
+    ubi.appendChild(tabla)
+
+        }
+
+
+
+   comu();
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+//console.log(canales);
+
+ alert("Descargando información del usuario")
+
+
+});
+
+
+
+
+function comu(canales,numero)
+{
+var gauge = new RadialGauge({ renderTo: "hola" ,width: 300,
+    height: 230, id:"holis"}).draw()
+
+}
+
+
+
+
+
+/*
     document.getElementById("nom").innerHTML = row.id;
 
 document.getElementById("sector").innerHTML = row.Sector;
 
 document.getElementById("estatus").innerHTML = row.Estado;
-
+*/
       modal.style.display = "block";
-      
+
+
     alert("holaa"+row.id.toString())
                     $('.info').removeClass('info');
                     $($element).addClass('info');
@@ -525,7 +921,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: fit-content;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -598,3 +994,117 @@ window.onclick = function(event) {
   }
 }
 </script>
+
+<script type="text/javascript">
+  
+
+</script>
+
+
+
+
+
+   <script src="js/bootstrap.js"></script>
+
+
+<script src="js/gauge.min.js">  </script> 
+
+
+
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+
+
+
+<style>
+#sliderLabel {
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+    display: inline-block;
+}
+
+#sliderLabel input {
+    display: none;
+}
+
+#sliderLabel input:checked + #slider {
+    left: 0px;
+}
+
+#slider {
+    left: -50px;
+    position: absolute;
+    top: 0px;
+    -webkit-transition: left .25s ease-out;
+    -moz-transition: left .25s ease-out;
+    -o-transition: left .25s ease-out;
+    -ms-transition: left .25s ease-out;
+    transition: left .25s ease-out;
+}
+
+#sliderOn,
+#sliderBlock,
+#sliderOff {
+    display: block;
+    font-family: arial, verdana, sans-serif;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+}
+
+#sliderOn {
+    background: #3269aa;
+    background: -webkit-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -moz-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -o-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -ms-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    color: white;
+    left: 0px;
+    width: 54px;
+}
+
+#sliderBlock {
+    background: #d9d9d8;
+    background: -webkit-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -moz-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -o-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -ms-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 28px;
+    left: 50px;
+    width: 50px;
+}
+
+#sliderOff {
+    background: #f2f3f2;
+    background: -webkit-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -moz-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -o-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -ms-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    color: #8b8b8b;
+    left: 96px;
+    width: 54px;
+}
+</style>
+
+
+
+
+

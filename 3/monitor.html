@@ -28,12 +28,38 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+
+
+          
           <li class="nav-item active">
             <a class="nav-link" href="/caudalimetros.html">Monitor<span class="sr-only">(current)</span></a>
           </li>
+
+
+
           <li class="nav-item">
             <a class="nav-link" href="centrales.html">Centrales</a>
           </li>
+
+
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Agregar Central</a>
+          <a class="dropdown-item" href="#">Agregar Usuario</a>
+          <div class="dropdown-divider"></div>
+          <!--
+          <a class="dropdown-item" href="#">Ver Canales</a>
+        -->
+        </div>
+
+
+      </li>
+      
     <li class="nav-item">
             <a class="nav-link" href="/index.html">Cerrar Sesión</a>
           </li>
@@ -60,6 +86,11 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="./Starter Template for Bootstrap_files/popper.min.js.descarga"></script>
     <script src="./Starter Template for Bootstrap_files/bootstrap.min.js.descarga"></script>
+
+<script src=" https://cdnjs.com/libraries/Chart.js"></script>
+
+
+
   <style>
 
 
@@ -104,6 +135,123 @@ body, html {
   </div>
 </div>
 
+<body id="cuerpo">
+<link rel="stylesheet" href="./simplepicker_ Material Inspired Date &amp; Time Picker Example_files/simplepicker.css">
+
+
+
+  <style>
+  body { font-family: 'Roboto'; }
+    .event-log {
+      font-family: consolas, Monaco, monospace;
+      margin: 10px 5px;
+      line-height: 2;
+      border: 1px solid #4c4c4c;
+      height: auto;
+      width: 90%;
+      padding: 2px 6px;
+      color: #4c4c4c;
+      white-space: pre;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+
+  
+
+  <script src="./simplepicker_ Material Inspired Date &amp; Time Picker Example_files/simplepicker.js.descarga"></script>
+
+
+
+
+  <script>
+    let simplepicker = new SimplePicker({
+      zIndex: 10
+    });
+
+
+    const $button = document.querySelector('button');
+    const $eventLog = document.querySelector('.event-log');
+
+
+    $button.addEventListener('click', (e) => {
+     // simplepicker.open();
+    });
+
+    // $eventLog.innerHTML += '\n\n';
+    simplepicker.on('submit', (date, readableDate) => {
+     // $eventLog.innerHTML += readableDate + '\n';
+
+
+var div = document.getElementById('eventos');
+
+//div.innerHTML += readableDate + '\n\n';
+insertar(readableDate); 
+
+
+
+
+   console.log(readableDate)
+
+
+    });
+
+    simplepicker.on('close', (date) => {
+      //$eventLog.innerHTML += 'Picker Closed'  + '\n';
+
+
+    });
+  </script>
+
+
+
+
+<div class="simplepicker-wrapper" style="z-index: 10;">
+  <div class="simpilepicker-date-picker">
+    <div class="simplepicker-day-header">Sunday</div>
+      <div class="simplepicker-date-section">
+        <div class="simplepicker-month-and-year">July 2021</div>
+        <div class="simplepicker-date">25th</div>
+        <div class="simplepicker-select-pane">
+          <button class="simplepicker-icon simplepicker-icon-calender active" title="Select date from calender!"></button>
+          <div class="simplepicker-time simplepicker-fade">12:00 PM</div>
+          <button class="simplepicker-icon simplepicker-icon-time" title="Select time"></button>
+        </div>
+      </div>
+      <div class="simplepicker-picker-section">
+        <div class="simplepicker-calender-section">
+          <div class="simplepicker-month-switcher simplepicker-select-pane">
+            <button class="simplepicker-icon simplepicker-icon-previous"></button>
+            <div class="simplepicker-selected-date">July 2021</div>
+            <button class="simplepicker-icon simplepicker-icon-next"></button>
+          </div>
+          <div class="simplepicker-calender">
+            <table>
+              <thead>
+                <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+              </thead>
+              <tbody>
+                <tr><td data-empty=""></td><td data-empty=""></td><td data-empty=""></td><td data-empty=""></td><td>1</td><td>2</td><td>3</td></tr><tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr><tr><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td></tr><tr><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr><tr><td class="active">25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr><tr><td data-empty=""></td><td data-empty=""></td><td data-empty=""></td><td data-empty=""></td><td data-empty=""></td><td data-empty=""></td><td data-empty=""></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="simplepicker-time-section">
+          <input type="time" value="12:00" autofocus="false">
+        </div>
+      </div>
+      <div class="simplepicker-bottom-part">
+        <button class="simplepicker-cancel-btn simplepicker-btn" title="Cancel">Cancel</button>
+        <button class="simplepicker-ok-btn simplepicker-btn" title="OK">OK</button>
+      </div>
+  </div>
+</div>
+
+
 
 </body>
 
@@ -131,8 +279,6 @@ body, html {
 
 
 <script src="js/jquery-1.11.1.min.js"></script> 
-
-   <script src="js/bootstrap.js"></script>
 
 
 <script src="js/gauge.min.js">  </script> 
@@ -587,6 +733,8 @@ if(i==5)
       
      celda.appendChild(label2)
 
+
+
      }
 
 if(i==6)
@@ -596,15 +744,59 @@ if(i==6)
    var detalles = document.createElement("button");
    detalles.setAttribute("class","button button1")
    detalles.setAttribute("id",item)
-   detalles.setAttribute("onclick","disp(this.id)")
+   detalles.setAttribute("onclick","abrir1(this.id)")
 
 
-   var textoCelda3 = document.createTextNode("Detalles");
+   var textoCelda3 = document.createTextNode("Especificaciones");
 detalles.appendChild(textoCelda3)
 
 
 
    celda.appendChild(detalles)
+     
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir2(this.id)")
+
+
+
+   var textoCelda3 = document.createTextNode("Lecturas");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Programación");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Editar");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
 
 
      }
@@ -717,7 +909,7 @@ for ( var item = 0; item < numero ; item++) {
 
  client.subscribe(canales[item], { qos: 0 })
           
-gauges[item] = new RadialGauge({ renderTo: item.toString() ,width: 405,
+gauges[item] = new RadialGauge({ renderTo: item.toString() ,width: 420,
     height: 350, id:item}).draw()
 
 
@@ -731,11 +923,11 @@ nodo2 = new RadialGauge({ renderTo: "1" ,width: 400,
 
 
 client.on('message', (topic, message, packet) => {
-  console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+  //console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
   
 var msn=message.toString();
 
-console.log(canales[0])
+//console.log(canales[0])
 for ( var item = 0; item < numero ; item++) {
 
  if(topic.toString()==canales[item])
@@ -771,11 +963,11 @@ function doalert(checkboxElem) {
 .button {
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
 
@@ -864,28 +1056,69 @@ if (!Array.prototype.forEach) {
 <!--
 <input type="button" value="Genera una tabla" onclick="genera_tabla()">
 -->
+
+<script src="src/bootstrap-input-spinner.js"></script>
+<script>
+    $("input[type='number']").inputSpinner();
+</script>
+<script src="bootstrap-input-spinner.js"></script>
+
+
+
+
+
 <script>
 
 
-    function genera_tabla() {
+function genera_tabla() {
+
+var alarmas=[];
+
+
+console.log(alarmas.length)
+
   // Obtener la referencia del elemento body
-  var body = document.getElementsByTagName("body")[0];
+var select = document.getElementById('ventana')
 
   // Crea un elemento <table> y un elemento <tbody>
   var tabla   = document.createElement("table");
+  tabla.setAttribute("id","sucesos")
+
+
+
+// Create an empty <thead> element and add it to the table:
+var header = tabla.createTHead();
+header.setAttribute("bgcolor","")
+
+// Create an empty <tr> element and add it to the first position of <thead>:
+var row = header.insertRow(0);    
+
+// Insert a new cell (<td>) at the first position of the "new" <tr> element:
+var cell = row.insertCell();
+var cell2 = row.insertCell();
+
+var testo = document.createTextNode('Accionador');
+cell.appendChild(testo);
+
+var testo2 = document.createTextNode('Fecha/Hora');
+cell2.appendChild(testo2);
+
+
+
+
   var tblBody = document.createElement("tbody");
 
   // Crea las celdas
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < alarmas.length; i++) {
     // Crea las hileras de la tabla
     var hilera = document.createElement("tr");
 
-    for (var j = 0; j < 2; j++) {
+    for (var j = 0; j < 1; j++) {
       // Crea un elemento <td> y un nodo de texto, haz que el nodo de
       // texto sea el contenido de <td>, ubica el elemento <td> al final
       // de la hilera de la tabla
       var celda = document.createElement("td");
-      var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      var textoCelda = document.createTextNode(alarmas[i]);
       celda.appendChild(textoCelda);
       hilera.appendChild(celda);
     }
@@ -897,16 +1130,164 @@ if (!Array.prototype.forEach) {
   // posiciona el <tbody> debajo del elemento <table>
   tabla.appendChild(tblBody);
   // appends <table> into <body>
-  body.appendChild(tabla);
+  select.appendChild(tabla);
   // modifica el atributo "border" de la tabla y lo fija a "2";
   tabla.setAttribute("border", "2");
 }
-    </script>
-<script>
+
+
+function genera_tabla2() {
+
+var triggers=[];
+
+
+console.log(triggers.length)
+
+  // Obtener la referencia del elemento body
+var select = document.getElementById('ventana')
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  tabla.setAttribute("id","tigre")
+
+
+
+// Create an empty <thead> element and add it to the table:
+var header = tabla.createTHead();
+header.setAttribute("bgcolor","")
+
+// Create an empty <tr> element and add it to the first position of <thead>:
+var row = header.insertRow(0);    
+
+// Insert a new cell (<td>) at the first position of the "new" <tr> element:
+var cell = row.insertCell();
+var cell2 = row.insertCell();
+
+var testo = document.createTextNode('Accionador');
+cell.appendChild(testo);
+
+var testo2 = document.createTextNode('Limite');
+cell2.appendChild(testo2);
 
 
 
 
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < triggers.length; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 1; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var textoCelda = document.createTextNode(triggers[i]);
+      celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  select.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+}
+
+
+
+
+
+function insertar(readableDate) {
+
+ // Find a <table> element with id="myTable":
+var table = document.getElementById("sucesos");
+
+// Create an empty <tr> element and add it to the 1st position of the table:
+var row = table.insertRow();
+
+// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+
+
+
+
+
+/*
+<select id="cars" name="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+  </select>
+*/
+
+var selector=document.createElement("select");
+selector.setAttribute("id","cars");
+selector.setAttribute("name","cars");
+
+
+var option1=document.createElement("option");
+option1.setAttribute("value","A");
+var A = document.createTextNode("AccionadorA");
+option1.appendChild(A);
+
+
+
+var option2=document.createElement("option");
+option2.setAttribute("value","B")
+var B = document.createTextNode("AccionadorB");
+option2.appendChild(B);
+
+selector.appendChild(option1);
+selector.appendChild(option2);
+
+
+
+
+
+
+
+// Add some text to the new cells:
+cell1.appendChild(selector);
+cell2.innerHTML = readableDate;
+
+}
+
+
+function insertar2() {
+var select = document.getElementById('ventana');
+ // Find a <table> element with id="myTable":
+var table = document.getElementById("tigre");
+
+// Create an empty <tr> element and add it to the 1st position of the table:
+var row = table.insertRow();
+
+// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+var cell1 = row.insertCell();
+
+
+
+var spinner=document.createElement("input");
+spinner.setAttribute("type","number");
+spinner.setAttribute("value","4.5");
+spinner.setAttribute("data-decimals","2");
+spinner.setAttribute("min","-20");
+spinner.setAttribute("max","50");
+spinner.setAttribute("step","0.1");
+select.appendChild(spinner);
+// Add some text to the new cells:
+cell1.appendChild(spinner);
+
+}
 
 
     </script>
@@ -925,31 +1306,13 @@ if (!Array.prototype.forEach) {
       <span class="close">&times;</span>
       <h2>Especificaciones</h2>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" id="ventana">
      
 
+<div class="event-log">Event logs:<br>Picker Closed
+</div>
 
-
-<body>
-
-<h2>Información General</h2>
-
-<table style="width:100%">
-  <tr>
-    <th>Nombre de la Central</th>
-    <th>Sector</th>
-    <th>Estado de la conexión</th>
-  </tr>
-  <tr>
-    <td id="nom"></td>
-    <td id="sector"></td>
-    <td id="estatus"></td>
-  </tr>
-</table>
-
-
-</body>
-
+    </div>
 
 
 <style>
@@ -963,7 +1326,8 @@ th, td {
 }
 </style>
 
-    </div>
+
+
     <div class="modal-footer">
       <h3>Modal Footer</h3>
     </div>
@@ -976,6 +1340,57 @@ th, td {
 
 
 
+<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+</style>
+
+<script>
+var hola=createElement("div");
+var ventana = document.getElementById("ventana");
+hola.appendChild(ventana);
+</script>
+
+
+<script type="text/javascript">
+  
+
+
+
+</script>
+<script src="./src/bootstrap-input-spinner.js"></script>
 <script>
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -991,7 +1406,7 @@ console.log(respuesta2);
 }
 
 
-
+/*
 function disp(id)
 {
 
@@ -1010,14 +1425,425 @@ abrir();
 
 
 }
+*/
+
+
+function abrir1(id)
+{
+
+var select = document.getElementById('ventana');
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
 
 
 
-function abrir()
+/*
+
+  <select id="cars" name="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+  </select>
+*/
+
+
+modal.style.display = "block";
+
+}
+
+
+
+
+
+
+var select = document.getElementById('ventana');
+var texto= document.createElement("h1");
+
+var texto3= document.createTextNode("alsjdlkjsd");
+
+texto.appendChild(texto3);
+
+select.appendChild(texto);
+
+
+
+
+
+
+
+function abrir2(id)
+{
+
+var lecturas=[];
+var fechas=[];
+
+ $.ajax({
+    url: "/nodo1",
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+   const numero = respuesta.length;
+   let nombres = respuesta;
+   console.log(numero);
+
+
+
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+
+
+for ( var item = 0; item < numero ; item++) {
+
+
+lecturas.push(respuesta[item].lectura)
+fechas.push(item)
+
+
+        }
+
+console.log(lecturas);
+
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+
+
+
+
+var select = document.getElementById('ventana');
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
+
+const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+
+
+const host = 'ws://192.168.43.42:9001'
+
+const options = {
+  keepalive: 60,
+  clientId: clientId,
+  protocolId: 'MQTT',
+  protocolVersion: 4,
+  clean: true,
+  reconnectPeriod: 1000,
+  connectTimeout: 30 * 1000,
+  will: {
+    topic: 'WillMsg',
+    payload: 'Connection Closed abnormally..!',
+    qos: 0,
+    retain: false
+  },
+}
+
+
+console.log('Connecting mqtt client')
+const client = mqtt.connect(host, options)
+
+client.on('error', (err) => {
+  console.log('Connection error: ', err)
+  //client.end()
+})
+
+client.on('reconnect', () => {
+  console.log('Reconnecting...')
+})
+
+
+
+client.on('connect', () => {
+  console.log('Client connected:' + clientId)
+ client.subscribe("nodo1", { qos: 0 })
+
+  
+})
+
+
+
+client.on('message', (topic, message, packet) => {
+  //console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+
+var msn=message.toString();
+//console.log("modlemqtt"+msn)
+ myChart.update();
+lecturas.push(msn)
+fechas.push("hola")
+console.log(lecturas);
+//console.log(fechas)
+
+  myChart.update();
+
+
+})
+
+
+var chart = document.createElement("canvas")
+
+chart.setAttribute("id","myChart")
+
+select.appendChild(chart)
+
+var slider= document.createElement("input");
+slider.setAttribute("type","range");
+slider.setAttribute("min","1");
+slider.setAttribute("max","100");
+slider.setAttribute("value","50");
+slider.setAttribute("class","slider");
+slider.setAttribute("id","myRange");
+
+var text = document.createTextNode("N° muestras");
+select.appendChild(text);
+
+
+
+var pe = document.createElement("p");
+
+var text2 = document.createTextNode("Configuración");
+pe.appendChild(text2);
+pe.setAttribute("id","demo");
+select.appendChild(pe);
+select.appendChild(slider)
+
+
+
+   
+var detalles = document.createElement("button");
+detalles.setAttribute("class","button button1")
+detalles.setAttribute("id","hola")
+detalles.setAttribute("onclick","limpiar(myChart)")
+
+
+var textoCelda3 = document.createTextNode("Limpiar");
+detalles.appendChild(textoCelda3)
+
+select.appendChild(detalles)
+
+
+
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+
+
+
+
+
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+
+
+
+ alert("Base de datos descargada")
+
+var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: fechas,
+        datasets: [{
+            label: 'Real Time',
+            data: lecturas,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+modal.style.display = "block";
+
+
+
+
+
+this.limpiar =function()
 {
 
 
-  modal.style.display = "block";
+ $.ajax({
+    url: "/limpiar",
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+   const numero = respuesta.length;
+   let nombres = respuesta;
+   console.log(numero);
+
+
+
+console.log(respuesta);
+
+
+console.log(lecturas);
+
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+
+for (var i = lecturas.length; i > 0; i--) {
+ lecturas.pop();
+  fechas.pop();
+}
+
+console.log(lecturas)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+function abrir3(id)
+{
+
+var select = document.getElementById('ventana');
+
+
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
+
+var evento=document.createElement("input");
+evento.setAttribute("type","button");
+evento.setAttribute("value","Añadir Evento");
+evento.setAttribute("onclick","simplepicker.open();")
+
+var trigger=document.createElement("input");
+
+
+trigger.setAttribute("type","button");
+trigger.setAttribute("value","Añadir Trigger");
+trigger.setAttribute("onclick","insertar2();")
+
+
+
+
+var dov= document.createElement("div");
+dov.setAttribute("id","eventos");
+
+
+
+select.appendChild(dov);
+
+let table = document.createElement('table');
+let thead = document.createElement('thead');
+let tbody = document.createElement('tbody');
+
+table.appendChild(thead);
+table.appendChild(tbody);
+
+// Adding the entire table to the body tag
+document.getElementById('ventana').appendChild(table);
+
+
+
+
+
+
+
+//genera_tabla();
+modal.style.display = "block";
+
+genera_tabla();
+select.appendChild(evento)
+
+
+
+genera_tabla2()
+select.appendChild(trigger)
+
+
+
+
+
+
 
 }
 
@@ -1037,6 +1863,7 @@ window.onclick = function(event) {
   }
 }
 </script>
+
 
 
 
@@ -1062,5 +1889,32 @@ function checkCheckbox() {
 
 </script>
 
+
+<script src="js/jquery-1.11.1.min.js"></script>
+
+
+   <script src="js/bootstrap.js"></script>
+
+
+
+
+
+
+
+
+</script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+
+
+
+<script>
+
+
+
+
+</script>
 
 

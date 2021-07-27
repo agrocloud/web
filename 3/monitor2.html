@@ -1,0 +1,1302 @@
+
+<script src="js/jquery-1.11.1.min.js"></script> 
+
+   <script src="js/bootstrap.js"></script>
+
+
+<script src="js/gauge.min.js">  </script> 
+
+
+
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+</style>
+
+
+
+<style>
+
+
+.Div {
+  border: 5px outset black;
+  background-color: whitesmoke;
+}
+
+.* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}
+
+.fa {font-size:50px;}
+
+</style>
+
+
+<style>
+#sliderLabel {
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+    display: inline-block;
+}
+
+#sliderLabel input {
+    display: none;
+}
+
+#sliderLabel input:checked + #slider {
+    left: 0px;
+}
+
+#slider {
+    left: -50px;
+    position: absolute;
+    top: 0px;
+    -webkit-transition: left .25s ease-out;
+    -moz-transition: left .25s ease-out;
+    -o-transition: left .25s ease-out;
+    -ms-transition: left .25s ease-out;
+    transition: left .25s ease-out;
+}
+
+#sliderOn,
+#sliderBlock,
+#sliderOff {
+    display: block;
+    font-family: arial, verdana, sans-serif;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+}
+
+#sliderOn {
+    background: #3269aa;
+    background: -webkit-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -moz-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -o-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: -ms-linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    background: linear-gradient(top, #3269aa 0%, #82b3f4 100%);
+    color: white;
+    left: 0px;
+    width: 54px;
+}
+
+#sliderBlock {
+    background: #d9d9d8;
+    background: -webkit-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -moz-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -o-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: -ms-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    background: linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+    border: 1px solid #a2a2a2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 28px;
+    left: 50px;
+    width: 50px;
+}
+
+#sliderOff {
+    background: #f2f3f2;
+    background: -webkit-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -moz-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -o-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: -ms-linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    background: linear-gradient(top, #8b8c8b 0%, #f2f3f2 50%);
+    color: #8b8b8b;
+    left: 96px;
+    width: 54px;
+}
+</style>
+
+
+
+
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+
+
+  $.ajax({
+    url:'/nodos',
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+    const numero = respuesta.length;
+    let nombres = respuesta;
+    const canales=[];
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+    console.log(respuesta.length)
+ 
+   //console.log(numero);
+
+   
+
+for ( var item = 0; item < 1 ; item++) {
+
+
+//botón 1
+var newContent1 = document.createTextNode("ON");
+var newContent2 = document.createTextNode("OFF");
+
+ var check= document.createElement("input");
+            check.setAttribute('type', "checkbox")
+            check.setAttribute('id',"A")
+             check.setAttribute('onchange', "doalert(this)")
+
+            var label=document.createElement("label")
+            label.setAttribute('id' , "sliderLabel")
+
+
+             var spa=document.createElement("span")
+               var spa2=document.createElement("span")
+
+
+               spa2.setAttribute('id',"sliderOn")
+               spa2.appendChild(newContent1)
+
+
+                 var spa3=document.createElement("span")
+                 spa3.setAttribute('id',"sliderOff")
+                 spa3.appendChild(newContent2)
+                 var spa4=document.createElement("span")
+                 spa4.setAttribute('id',"sliderBlock")
+
+
+             spa.setAttribute('id',"slider")
+             spa.appendChild(spa2)
+             spa.appendChild(spa3)
+             spa.appendChild(spa4)
+
+             label.appendChild(check)
+             label.appendChild(spa)
+
+           
+
+//boton2
+
+var newContent3 = document.createTextNode("ON");
+var newContent4 = document.createTextNode("OFF");
+
+ var check2= document.createElement("input");
+            check2.setAttribute('type', "checkbox")
+            check2.setAttribute('id',"B")
+             check2.setAttribute('onchange', "doalert(this)")
+
+
+            var label2=document.createElement("label")
+            label2.setAttribute('id' , "sliderLabel")
+
+
+             var spo=document.createElement("span")
+               var spo2=document.createElement("span")
+
+
+               spo2.setAttribute('id',"sliderOn")
+               spo2.appendChild(newContent3)
+
+
+                 var spo3=document.createElement("span")
+                 spo3.setAttribute('id',"sliderOff")
+                 spo3.appendChild(newContent4)
+                 var spo4=document.createElement("span")
+                 spo4.setAttribute('id',"sliderBlock")
+
+
+             spo.setAttribute('id',"slider")
+             spo.appendChild(spo2)
+             spo.appendChild(spo3)
+             spo.appendChild(spo4)
+
+             label2.appendChild(check2)
+             label2.appendChild(spo)
+
+
+
+            var canv = document.createElement("canvas");
+            
+            var division= document.createElement("div");
+            division.setAttribute("style" , "float: left")
+
+
+
+           
+
+            var salto= document.createElement("br")
+            var porte= document.createElement("h1")
+
+
+            var newContent3 = document.createTextNode("respuesta[item].id");
+            porte.appendChild(newContent3)
+            
+
+
+
+            document.body.appendChild(division)
+
+               
+            canv.setAttribute('width', 500);
+            canv.setAttribute('height', 500);
+
+            canv.setAttribute('id', "hola");
+  
+           
+
+
+
+
+
+ // Obtener la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < 7; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 1; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+     // var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      //celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+
+
+     if(i==0)
+     {
+
+     var textoCelda = document.createTextNode(respuesta[item].id);
+     celda.appendChild(textoCelda);
+     
+     }
+
+
+if(i==1)
+     {
+
+     var textoCelda = document.createTextNode("");
+     celda.appendChild(textoCelda);
+      celda.appendChild(canv)
+      celda.appendChild(textoCelda);
+
+     }
+
+
+if(i==2)
+     {
+
+        var textoCelda2 = document.createTextNode("Accionador A");
+     celda.appendChild(textoCelda2);
+
+     
+
+     }
+
+
+if(i==3)
+     {
+
+      
+     celda.appendChild(label)
+
+     }
+
+
+if(i==4)
+     {
+
+        var textoCelda3 = document.createTextNode("Accionador B");
+     celda.appendChild(textoCelda3);
+
+     
+
+     }
+
+
+if(i==5)
+     {
+
+      
+     celda.appendChild(label2)
+
+
+
+     }
+
+if(i==6)
+     {
+
+      
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir1(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Especificaciones");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+     
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir2(this.id)")
+
+
+
+   var textoCelda3 = document.createTextNode("Lecturas");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Programación");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","button button1")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Editar");
+detalles.appendChild(textoCelda3)
+
+
+
+   celda.appendChild(detalles)
+
+
+
+     }
+
+
+
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+
+
+    //division.appendChild(label);
+    division.appendChild(tabla)
+
+        }
+
+
+
+   comu();
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+//console.log(canales);
+
+ alert("Descargando información del usuario")
+
+
+});
+
+
+
+
+function comu(canales,numero)
+{
+var gauge = new RadialGauge({ renderTo: "hola" ,width: 420,
+    height: 350, id:"holis"}).draw()
+
+}
+
+</script>
+
+<script>
+
+
+
+
+function doalert(checkboxElem) {
+  if (checkboxElem.checked) {
+    alert ("hi");
+  } else {
+    alert ("bye");
+  }
+}
+
+</script>
+
+
+
+
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+
+</style>
+
+</body>
+</html>
+
+
+
+<!--
+<canvas id="gauge1"></canvas>
+-->
+
+
+<script>
+/*
+new RadialGauge({
+    renderTo: 'gauge1',
+    width: 400,
+    height: 400,
+    units: 'Km/h',
+    title: false,
+    value: 0,
+    minValue: 0,
+    maxValue: 220,
+    majorTicks: [
+        '0','20','40','60','80','100','120','140','160','180','200','220'
+    ],
+    minorTicks: 2,
+    strokeTicks: false,
+    highlights: [
+        { from: 0, to: 50, color: 'rgba(0,255,0,.15)' },
+        { from: 50, to: 100, color: 'rgba(255,255,0,.15)' },
+        { from: 100, to: 150, color: 'rgba(255,30,0,.25)' },
+        { from: 150, to: 200, color: 'rgba(255,0,225,.25)' },
+        { from: 200, to: 220, color: 'rgba(0,0,255,.25)' }
+    ],
+    colorPlate: '#222',
+    colorMajorTicks: '#f5f5f5',
+    colorMinorTicks: '#ddd',
+    colorTitle: '#fff',
+    colorUnits: '#ccc',
+    colorNumbers: '#eee',
+    colorNeedle: 'rgba(240, 128, 128, 1)',
+    colorNeedleEnd: 'rgba(255, 160, 122, .9)',
+    valueBox: true,
+    animationRule: 'bounce',
+    animationDuration: 500
+}).draw();
+*/
+
+/*new RadialGauge({ renderTo: "gauge3",width: 400,
+    height: 400, }).draw();
+      
+*/
+
+
+
+
+
+/*
+if (!window.addEventListener) {
+    window.addEventListener = function(evt, listener) {
+        window.attachEvent('on' + evt, listener);
+    };
+}
+if (!Array.prototype.forEach) {
+    Array.prototype.forEach = function(cb) {
+        var i = 0, s = this.length;
+        for (; i < s; i++) {
+            cb && cb(this[i], i, this);
+        }
+    }
+}
+*/
+
+
+
+</script>
+<!--
+<input type="button" value="Genera una tabla" onclick="genera_tabla()">
+-->
+<script>
+
+
+    function genera_tabla() {
+  // Obtener la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Crea las celdas
+  for (var i = 0; i < 2; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+
+    for (var j = 0; j < 2; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+      celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+    }
+
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+}
+    </script>
+<script>
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Especificaciones</h2>
+    </div>
+    <div class="modal-body" id="ventana">
+     
+
+
+
+
+
+
+    </div>
+
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+
+
+
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</body>
+
+
+</html>
+
+
+
+<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+</style>
+
+<script>
+var hola=createElement("div");
+var ventana = document.getElementById("ventana");
+hola.appendChild(ventana);
+</script>
+
+
+<script type="text/javascript">
+  
+
+
+
+</script>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+var respuesta2 = [];
+
+function copia(respuesta)
+{
+
+respuesta2.push(respuesta)
+console.log(respuesta2);
+
+}
+
+
+/*
+function disp(id)
+{
+
+console.log(id)
+console.log(respuesta2)
+
+
+document.getElementById("nom").innerHTML = respuesta2[id].id;
+
+document.getElementById("sector").innerHTML = respuesta2[id].Sector;
+
+document.getElementById("estatus").innerHTML = respuesta2[id].Estado;
+
+
+abrir();
+
+
+}
+*/
+
+
+function abrir1(id)
+{
+
+var select = document.getElementById('ventana');
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
+
+
+
+modal.style.display = "block";
+
+}
+
+
+
+
+
+
+var select = document.getElementById('ventana');
+var texto= document.createElement("h1");
+
+var texto3= document.createTextNode("alsjdlkjsd");
+
+texto.appendChild(texto3);
+
+select.appendChild(texto);
+
+
+
+
+
+
+
+function abrir2(id)
+{
+
+var lecturas=[];
+var fechas=[];
+
+ $.ajax({
+    url: "/nodo1",
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+   const numero = respuesta.length;
+   let nombres = respuesta;
+   console.log(numero);
+
+
+
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+console.log(respuesta);
+
+
+for ( var item = 0; item < numero ; item++) {
+
+
+lecturas.push(respuesta[item].lectura)
+fechas.push(item)
+
+
+        }
+
+console.log(lecturas);
+
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+
+
+
+
+var select = document.getElementById('ventana');
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
+
+const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+
+
+const host = 'ws://192.168.43.42:9001'
+
+const options = {
+  keepalive: 60,
+  clientId: clientId,
+  protocolId: 'MQTT',
+  protocolVersion: 4,
+  clean: true,
+  reconnectPeriod: 1000,
+  connectTimeout: 30 * 1000,
+  will: {
+    topic: 'WillMsg',
+    payload: 'Connection Closed abnormally..!',
+    qos: 0,
+    retain: false
+  },
+}
+
+
+console.log('Connecting mqtt client')
+const client = mqtt.connect(host, options)
+
+client.on('error', (err) => {
+  console.log('Connection error: ', err)
+  //client.end()
+})
+
+client.on('reconnect', () => {
+  console.log('Reconnecting...')
+})
+
+
+
+client.on('connect', () => {
+  console.log('Client connected:' + clientId)
+ client.subscribe("nodo1", { qos: 0 })
+
+  
+})
+
+
+
+client.on('message', (topic, message, packet) => {
+  //console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+
+var msn=message.toString();
+//console.log("modlemqtt"+msn)
+ myChart.update();
+lecturas.push(msn)
+fechas.push("hola")
+console.log(lecturas);
+//console.log(fechas)
+
+  myChart.update();
+
+
+})
+
+
+var chart = document.createElement("canvas")
+
+chart.setAttribute("id","myChart")
+
+select.appendChild(chart)
+
+var slider= document.createElement("input");
+slider.setAttribute("type","range");
+slider.setAttribute("min","1");
+slider.setAttribute("max","100");
+slider.setAttribute("value","50");
+slider.setAttribute("class","slider");
+slider.setAttribute("id","myRange");
+
+var text = document.createTextNode("N° muestras");
+select.appendChild(text);
+
+
+
+var pe = document.createElement("p");
+
+var text2 = document.createTextNode("Configuración");
+pe.appendChild(text2);
+pe.setAttribute("id","demo");
+select.appendChild(pe);
+select.appendChild(slider)
+
+
+
+   
+var detalles = document.createElement("button");
+detalles.setAttribute("class","button button1")
+detalles.setAttribute("id","hola")
+detalles.setAttribute("onclick","limpiar(myChart)")
+
+
+var textoCelda3 = document.createTextNode("Limpiar");
+detalles.appendChild(textoCelda3)
+
+select.appendChild(detalles)
+
+
+
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+
+
+
+
+
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+
+
+
+ alert("Base de datos descargada")
+
+var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: fechas,
+        datasets: [{
+            label: 'Real Time',
+            data: lecturas,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+modal.style.display = "block";
+
+
+
+
+
+this.limpiar =function()
+{
+
+
+ $.ajax({
+    url: "/limpiar",
+    method:'POST',
+    datatype:"JSON",
+    contentType: "application/json",
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+
+
+  }).done(function(respuesta){
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+   console.log(respuesta.length)
+   const numero = respuesta.length;
+   let nombres = respuesta;
+   console.log(numero);
+
+
+
+console.log(respuesta);
+
+
+console.log(lecturas);
+
+
+
+}).fail(function(err){
+    console.log(err)
+    
+
+  }
+
+    )
+
+for (var i = lecturas.length; i > 0; i--) {
+ lecturas.pop();
+  fechas.pop();
+}
+
+console.log(lecturas)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+function abrir3(id)
+{
+
+var select = document.getElementById('ventana');
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
+
+
+
+
+modal.style.display = "block";
+
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+<script>
+function checkCheckbox() {  
+  var yes = document.getElementById("myCheck1");  
+  var no = document.getElementById("myCheck2");  
+  if (yes.checked == true && no.checked == true){  
+    return document.getElementById("error").innerHTML = "Please mark only one checkbox either Yes or No";  
+  }  
+  else if (yes.checked == true){  
+    var y = document.getElementById("myCheck1").value;  
+    return document.getElementById("result").innerHTML = y;   
+  }   
+  else if (no.checked == true){  
+    var n = document.getElementById("myCheck2").value;  
+    return document.getElementById("result").innerHTML = n;  
+  }  
+  else {  
+    return document.getElementById("error").innerHTML = "*Please mark any of checkbox";  
+  }  
+}  
+
+</script>
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+
+
+   <script src="js/bootstrap.js"></script>
+
+
+
+
+
+
+
+
+</script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+
+
+
+<script>
+
+
+
+
+</script>
+
+
