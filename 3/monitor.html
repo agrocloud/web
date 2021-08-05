@@ -129,11 +129,18 @@ body, html {
 
 
 
+
+
 <div class="hero-image">
   <div class="hero-text">
   
   </div>
 </div>
+
+
+
+ 
+
 
 <body id="cuerpo">
 <link rel="stylesheet" href="./simplepicker_ Material Inspired Date &amp; Time Picker Example_files/simplepicker.css">
@@ -190,7 +197,9 @@ body, html {
 var div = document.getElementById('eventos');
 
 //div.innerHTML += readableDate + '\n\n';
-insertar(readableDate); 
+//load(); 
+
+insertar(readableDate);
 
 
 
@@ -546,7 +555,7 @@ var newContent2 = document.createTextNode("OFF");
 
  var check= document.createElement("input");
             check.setAttribute('type', "checkbox")
-            check.setAttribute('id', respuesta[item].id+"A")
+            check.setAttribute('id', ":"+respuesta[item].id+"/A")
              check.setAttribute('onchange', "doalert(this)")
 
             var label=document.createElement("label")
@@ -585,7 +594,7 @@ var newContent4 = document.createTextNode("OFF");
 
  var check2= document.createElement("input");
             check2.setAttribute('type', "checkbox")
-            check2.setAttribute('id', respuesta[item].id+"B")
+            check2.setAttribute('id', respuesta[item].id+"/B")
              check2.setAttribute('onchange', "doalert(this)")
 
 
@@ -850,16 +859,12 @@ detalles.appendChild(textoCelda3)
 
 
 
+
+
+
 function comu(canales,numero)
 {
-
-
-let canales2=[];
-canales2=canales;
 const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
-
-
-const host = 'ws://192.168.43.42:9001'
 
 const options = {
   keepalive: 60,
@@ -876,6 +881,11 @@ const options = {
     retain: false
   },
 }
+
+
+const host = 'ws://192.168.43.42:9001' 
+let canales2=[];
+canales2=canales;
 
 
 console.log('Connecting mqtt client')
@@ -926,8 +936,12 @@ client.on('message', (topic, message, packet) => {
   //console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
   
 var msn=message.toString();
+console.log(msn);
+console.log(msn.length)
 
 //console.log(canales[0])
+if(message.length<6)
+{
 for ( var item = 0; item < numero ; item++) {
 
  if(topic.toString()==canales[item])
@@ -935,8 +949,13 @@ for ( var item = 0; item < numero ; item++) {
  	gauges[item].value = parseInt(msn)
 
         }
+}
+
+
 
 })
+
+
 }
 
 </script>
@@ -946,11 +965,99 @@ for ( var item = 0; item < numero ; item++) {
 
 
 
-function doalert(checkboxElem) {
+function doalert(checkboxElem,canales,numero) {
+
+
+let canales2=[];
+canales2=canales;
+
+
+const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+
+
+const host = 'ws://192.168.43.42:9001'
+
+const options = {
+  keepalive: 60,
+  clientId: clientId,
+  protocolId: 'MQTT',
+  protocolVersion: 4,
+  clean: true,
+  reconnectPeriod: 1000,
+  connectTimeout: 30 * 1000,
+  will: {
+    topic: 'WillMsg',
+    payload: 'Connection Closed abnormally..!',
+    qos: 0,
+    retain: false
+  },
+}
+
+for ( var item = 0; item < numero ; item++) {
+
+ client.subscribe(canales[item], { qos: 0 })
+
+
+        }
+
+
+console.log('Connecting mqtt client')
+const client = mqtt.connect(host, options)
+
+client.on('error', (err) => {
+  console.log('Connection error: ', err)
+  //client.end()
+})
+
+client.on('reconnect', () => {
+  console.log('Reconnecting...')
+})
+
+
+
+client.on('connect', () => {
+  console.log('Client connected:' + clientId)
+  // Subscribe
+
+  
+})
+
+
+client.on('message', (topic, message, packet) => {
+  //console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+  
+
+})
+
+
   if (checkboxElem.checked) {
-    alert ("hi");
+
+
+
+  var strong = checkboxElem.id.substring(
+    checkboxElem.id.lastIndexOf(":") + 1, 
+    checkboxElem.id.lastIndexOf("/")
+);
+
+mySubString=strong+"control";
+ // alert(mySubString)
+
+    client.publish(mySubString,checkboxElem.id+"#ON;")
+    console.log(mySubString,checkboxElem.id+"#ON;")
+   
   } else {
-    alert ("bye");
+    //alert (checkboxElem.id+"/OFF");
+
+  var strong = checkboxElem.id.substring(
+    checkboxElem.id.lastIndexOf(":") + 1, 
+    checkboxElem.id.lastIndexOf("/")
+);
+  mySubString=strong+"control";
+  //alert(mySubString)
+ client.publish(mySubString,checkboxElem.id+"#OFF;")
+ console.log(mySubString,checkboxElem.id+"#OFF;")
+    
+    
   }
 }
 
@@ -1057,17 +1164,190 @@ if (!Array.prototype.forEach) {
 <input type="button" value="Genera una tabla" onclick="genera_tabla()">
 -->
 
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+
+
+<style>
+
+
+.Div {
+  border: 5px outset black;
+  background-color: whitesmoke;
+}
+
+.* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}
+
+.fa {font-size:50px;}
+
+</style>
+
+
+
 <script src="src/bootstrap-input-spinner.js"></script>
 <script>
     $("input[type='number']").inputSpinner();
 </script>
+
+
 <script src="bootstrap-input-spinner.js"></script>
 
+
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+
+<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+       
 
 
 
 
 <script>
+
+
+
+function genera() {
+
+  /*
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+    
+    
+    </tbody>
+  </table>
+*/
+
+
+var alarmas=[];
+var text1 = document.createTextNode('Accionador');
+var text2 = document.createTextNode('Fecha/Hora');
+var text3 = document.createTextNode('Acción');
+
+
+console.log(alarmas.length)
+
+  // Obtener la referencia del elemento body
+var select = document.getElementById('ventana')
+
+  // Crea un elemento <table> y un elemento <tbody>
+  var table   = document.createElement("table");
+  table.setAttribute("class","table table-hover")
+  table.setAttribute("id","table")
+  table.setAttribute("style","td.fit")
+
+var head=document.createElement("thead");
+var column=document.createElement("tr");
+var celda1=document.createElement("th");
+celda1.appendChild(text1);
+celda1.setAttribute("data-field","accionador")
+var celda2=document.createElement("th");
+celda2.appendChild(text2);
+celda2.setAttribute("data-field","timer")
+var celda3=document.createElement("th");
+celda3.appendChild(text3);
+celda3.setAttribute("data-field","accion")
+
+column.appendChild(celda1);
+column.appendChild(celda2);
+
+column.appendChild(celda3);
+
+head.appendChild(column);
+
+
+var body=document.createElement("tbody");
+
+
+
+var column2=document.createElement("tr");
+var cell1=document.createElement("td")
+cell1.setAttribute("width","10%")
+
+
+var cell2=document.createElement("td")
+cell2.setAttribute("width","10%")
+
+
+
+var cell3=document.createElement("td")
+cell3.setAttribute("width","10%")
+
+
+
+
+
+body.appendChild(column2);
+
+table.appendChild(head);
+table.appendChild(body);
+
+select.appendChild(table);
+}
+
+
+
+
+
+
+
+
+
 
 
 function genera_tabla() {
@@ -1083,6 +1363,8 @@ var select = document.getElementById('ventana')
   // Crea un elemento <table> y un elemento <tbody>
   var tabla   = document.createElement("table");
   tabla.setAttribute("id","sucesos")
+  tabla.setAttribute("class","table table-hover")
+
 
 
 
@@ -1096,12 +1378,17 @@ var row = header.insertRow(0);
 // Insert a new cell (<td>) at the first position of the "new" <tr> element:
 var cell = row.insertCell();
 var cell2 = row.insertCell();
+var cell3 = row.insertCell();
 
 var testo = document.createTextNode('Accionador');
 cell.appendChild(testo);
 
 var testo2 = document.createTextNode('Fecha/Hora');
 cell2.appendChild(testo2);
+
+var testo3 = document.createTextNode('Acción');
+cell3.appendChild(testo3);
+
 
 
 
@@ -1112,6 +1399,7 @@ cell2.appendChild(testo2);
   for (var i = 0; i < alarmas.length; i++) {
     // Crea las hileras de la tabla
     var hilera = document.createElement("tr");
+    //hilera.setAttribute("clickable-row","click")
 
     for (var j = 0; j < 1; j++) {
       // Crea un elemento <td> y un nodo de texto, haz que el nodo de
@@ -1178,6 +1466,8 @@ cell2.appendChild(testo2);
   for (var i = 0; i < triggers.length; i++) {
     // Crea las hileras de la tabla
     var hilera = document.createElement("tr");
+    hilera.setAttribute("class","clickable-row")
+
 
     for (var j = 0; j < 1; j++) {
       // Crea un elemento <td> y un nodo de texto, haz que el nodo de
@@ -1203,19 +1493,20 @@ cell2.appendChild(testo2);
 
 
 
-
-
+           
 function insertar(readableDate) {
 
  // Find a <table> element with id="myTable":
-var table = document.getElementById("sucesos");
+var table = document.getElementById("table");
 
 // Create an empty <tr> element and add it to the 1st position of the table:
 var row = table.insertRow();
 
 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-var cell1 = row.insertCell(0);
-var cell2 = row.insertCell(1);
+var cell1 = row.insertCell();
+var cell2 = row.insertCell();
+var cell3 = row.insertCell();
+
 
 
 
@@ -1237,15 +1528,18 @@ selector.setAttribute("name","cars");
 
 var option1=document.createElement("option");
 option1.setAttribute("value","A");
-var A = document.createTextNode("AccionadorA");
+var A = document.createTextNode("A");
 option1.appendChild(A);
 
 
 
 var option2=document.createElement("option");
 option2.setAttribute("value","B")
-var B = document.createTextNode("AccionadorB");
+var B = document.createTextNode("B");
 option2.appendChild(B);
+
+
+
 
 selector.appendChild(option1);
 selector.appendChild(option2);
@@ -1253,12 +1547,41 @@ selector.appendChild(option2);
 
 
 
+var selector2=document.createElement("select");
+selector2.setAttribute("id","cars2");
+selector2.setAttribute("name","cars2");
+
+
+var opt1=document.createElement("option");
+opt1.setAttribute("value","A");
+var A1 = document.createTextNode("ON");
+opt1.appendChild(A1);
 
 
 
+var opt2=document.createElement("option");
+opt2.setAttribute("value","B")
+var B2 = document.createTextNode("OFF");
+opt2.appendChild(B2);
+
+
+
+
+selector2.appendChild(opt1);
+selector2.appendChild(opt2);
+
+
+
+
+
+
+cell1.setAttribute("width","10%")
 // Add some text to the new cells:
 cell1.appendChild(selector);
+
 cell2.innerHTML = readableDate;
+cell3.appendChild(selector2);
+
 
 }
 
@@ -1272,7 +1595,9 @@ var table = document.getElementById("tigre");
 var row = table.insertRow();
 
 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-var cell1 = row.insertCell();
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+
 
 
 
@@ -1286,6 +1611,7 @@ spinner.setAttribute("step","0.1");
 select.appendChild(spinner);
 // Add some text to the new cells:
 cell1.appendChild(spinner);
+cell1.appendChild(spinner);
 
 }
 
@@ -1293,7 +1619,28 @@ cell1.appendChild(spinner);
     </script>
 
 
+<script>
 
+
+
+var table = $('#table').DataTable(); 
+
+       $('#table').bootstrapTable({});
+            function load(){
+                var data = [{
+                        accionador: 1,
+                        timer: 'Item 1',
+                        accion: '$1'
+                    }, {
+                        accionador: 2,
+                        timer: 'Item 2',
+                        accion: '$4'
+                    }]; 
+                $('#table').bootstrapTable("load", data);
+            }
+
+
+</script>
 
 
 
@@ -1831,12 +2178,18 @@ document.getElementById('ventana').appendChild(table);
 //genera_tabla();
 modal.style.display = "block";
 
+
+/*
 genera_tabla();
-select.appendChild(evento)
+
 
 
 
 genera_tabla2()
+
+*/
+genera();
+select.appendChild(evento)
 select.appendChild(trigger)
 
 
@@ -1864,30 +2217,6 @@ window.onclick = function(event) {
 }
 </script>
 
-
-
-
-<script>
-function checkCheckbox() {  
-  var yes = document.getElementById("myCheck1");  
-  var no = document.getElementById("myCheck2");  
-  if (yes.checked == true && no.checked == true){  
-    return document.getElementById("error").innerHTML = "Please mark only one checkbox either Yes or No";  
-  }  
-  else if (yes.checked == true){  
-    var y = document.getElementById("myCheck1").value;  
-    return document.getElementById("result").innerHTML = y;   
-  }   
-  else if (no.checked == true){  
-    var n = document.getElementById("myCheck2").value;  
-    return document.getElementById("result").innerHTML = n;  
-  }  
-  else {  
-    return document.getElementById("error").innerHTML = "*Please mark any of checkbox";  
-  }  
-}  
-
-</script>
 
 
 <script src="js/jquery-1.11.1.min.js"></script>
