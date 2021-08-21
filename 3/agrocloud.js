@@ -90,6 +90,8 @@ client.connect(function(err) {
 
   const db = client.db(dbName);
  /*
+
+ 
  insertDocuments(db, function() {
   findDocuments(db, function() {
   });
@@ -292,7 +294,92 @@ console.log("peticion recibida")
 
   );
 
+app.post("/node",function(req,res)
 
+{
+
+
+const db = client.db(dbName);
+
+
+const collection = db.collection('nodos');
+
+collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+res.send(docs)
+  });
+
+console.log("peticion recibida")
+ 
+
+}
+
+  );
+
+
+app.post("/timers",function(req,res)
+
+{
+
+/*
+const db = client.db(dbName);
+
+
+const collection = db.collection('nodos');
+
+collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+res.send(docs)
+  });
+
+*/
+const db = client.db(dbName);
+    const collection = db.collection('timernodo1a');
+
+collection.insertOne(req.body);
+
+
+res.send("hola");
+console.log(req.body)
+
+console.log("peticion recibida")
+ 
+
+}
+
+  );
+
+
+
+app.post("/tomers",function(req,res)
+
+{
+
+const db = client.db(dbName);
+
+
+const collection = db.collection('timernodo1a');
+
+collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+
+     res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(docs));
+
+
+//res.send(docs)
+  });
+
+console.log("peticion recibida")
+}
+
+  );
 
 
 

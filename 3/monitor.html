@@ -86,6 +86,9 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="./Starter Template for Bootstrap_files/popper.min.js.descarga"></script>
     <script src="./Starter Template for Bootstrap_files/bootstrap.min.js.descarga"></script>
+   
+
+
 
 <script src=" https://cdnjs.com/libraries/Chart.js"></script>
 
@@ -131,6 +134,43 @@ body, html {
 
 
 
+<script type="text/javascript">
+/*  
+// Set the date we're counting down to
+var countDownDate = new Date("Aug 12, 2021 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + ":"
+  + minutes + ":" + seconds;
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+*/
+</script>
+
+
+
+
 <div class="hero-image">
   <div class="hero-text">
   
@@ -138,8 +178,6 @@ body, html {
 </div>
 
 
-
- 
 
 
 <body id="cuerpo">
@@ -202,12 +240,11 @@ var div = document.getElementById('eventos');
 insertar(readableDate);
 
 
-
-
    console.log(readableDate)
 
 
     });
+
 
     simplepicker.on('close', (date) => {
       //$eventLog.innerHTML += 'Picker Closed'  + '\n';
@@ -265,8 +302,6 @@ insertar(readableDate);
 </body>
 
 </html>
-
-
 
 
 
@@ -522,6 +557,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 $( document ).ready(function() {
 
 
+
+
   $.ajax({
     url:'/nodos',
     method:'POST',
@@ -546,7 +583,182 @@ $( document ).ready(function() {
 
    
 
+ var x=[];
+
+
+
+
+// Set the date we're counting down to
+
+ var countDownDate=[];
+ countDownDate[0] = new Date("Aug 12, 2021 15:45:25").getTime();
+  countDownDate[1] = new Date("Aug 15, 2022 15:37:25").getTime();
+   countDownDate[2] = new Date("Aug 15, 2024 15:37:25").getTime();
+    countDownDate[3] = new Date("Aug 15, 2021 15:37:25").getTime();
+    countDownDate[4] = new Date("Aug 15, 2021 15:37:25").getTime();
+    countDownDate[5] = new Date("Aug 15, 2021 15:37:25").getTime();
+    countDownDate[6] = new Date("Aug 15, 2021 15:37:25").getTime();
+      countDownDate[7] = new Date("Aug 15, 2021 15:37:25").getTime();
+    
+
+
+var countDownDate2=[];
+ countDownDate2[0] = new Date("Aug 25, 2021 15:45:25").getTime();
+  countDownDate2[1] = new Date("Aug 15, 2022 15:37:25").getTime();
+   countDownDate2[2] = new Date("Aug 28, 2024 15:37:25").getTime();
+    countDownDate2[3] = new Date("Aug 15, 2021 15:37:25").getTime();
+       countDownDate2[4] = new Date("Aug 15, 2021 15:37:25").getTime();
+    countDownDate2[5] = new Date("Aug 15, 2021 15:37:25").getTime();
+    countDownDate2[6] = new Date("Aug 15, 2021 15:37:25").getTime();
+      countDownDate[7] = new Date("Aug 15, 2021 15:37:25").getTime();
+
+
+
+
+
+// Update the count down every 1 second
+ x[0] = setInterval(function() {
+
+  for ( var item = 0; item < numero; item++) {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate[item]- now;
+  var distance2 = countDownDate2[item]- now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+    var days2 = Math.floor(distance2 / (1000 * 60 * 60 * 24));
+  var hours2 = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes2 = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds2 = Math.floor((distance2 % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  var tome=days + "d " + hours + ":"
+  + minutes + ":" + seconds;
+
+  // Output the result in an element with id="demo"
+  var tome2=days2 + "d " + hours2 + ":"
+  + minutes2 + ":" + seconds2;
+
+
+var textnode = document.createTextNode(tome);
+
+var textnode2 = document.createTextNode(tome2);
+
+
+
+var select = document.getElementById("demo"+respuesta[item].id);
+
+var select2 = document.getElementById("demo2"+respuesta[item].id);
+
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda3 = document.createTextNode("Imagen");
+detalles.appendChild(textnode)
+
+
+var detalles2 = document.createElement("button");
+   detalles2.setAttribute("class","")
+   detalles2.setAttribute("id",item)
+   detalles2.setAttribute("onclick","abrir3(this.id)")
+
+
+   var textoCelda4 = document.createTextNode("Imagen");
+detalles2.appendChild(textnode2)
+
+
+
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
+
+
+while (select2.firstChild) {
+  select2.removeChild(select2.firstChild);
+}
+
+
+
+
+  document.getElementById("demo"+respuesta[item].id).appendChild(detalles);
+  document.getElementById("demo2"+respuesta[item].id).appendChild(detalles2);
+
+  // If the count down is over, write some text 
+  if (distance < 0) {
+
+while (select.firstChild) {
+  select.removeChild(select.firstChild);
+}
+
+
+var textnode = document.createTextNode("Programar");
+   var select = document.getElementById("demo"+respuesta[item].id);
+
+
+
+   var detalles = document.createElement("button");
+   detalles.setAttribute("class","")
+   detalles.setAttribute("id",item)
+   detalles.setAttribute("onclick","abrir3(this.id)")
+
+
+
+
+  
+detalles.appendChild(textnode)
+    document.getElementById("demo"+respuesta[item].id).appendChild(detalles);
+  }
+
+    if (distance2 < 0) {
+
+while (select2.firstChild) {
+  select2.removeChild(select2.firstChild);
+}
+
+
+var textnode = document.createTextNode("Programar");
+   var select2 = document.getElementById("demo2"+respuesta[item].id);
+
+
+
+   var detalles2 = document.createElement("button");
+   detalles2.setAttribute("class","")
+   detalles2.setAttribute("id",item)
+   detalles2.setAttribute("onclick","abrir3(this.id)")
+
+
+
+
+  
+detalles2.appendChild(textnode)
+    document.getElementById("demo2"+respuesta[item].id).appendChild(detalles2);
+  }
+
+
+}
+
+}, 1000);
+
+
+
+
 for ( var item = 0; item < numero ; item++) {
+
 copia(respuesta[item]);
 
 //botón 1
@@ -671,7 +883,7 @@ var newContent4 = document.createTextNode("OFF");
   var tblBody = document.createElement("tbody");
 
   // Crea las celdas
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < 9; i++) {
     // Crea las hileras de la tabla
     var hilera = document.createElement("tr");
 
@@ -711,6 +923,7 @@ if(i==2)
         var textoCelda2 = document.createTextNode("Accionador A");
      celda.appendChild(textoCelda2);
 
+
      
 
      }
@@ -719,8 +932,13 @@ if(i==2)
 if(i==3)
      {
 
-      
+   
+
+
+
+   
      celda.appendChild(label)
+
 
      }
 
@@ -728,19 +946,46 @@ if(i==3)
 if(i==4)
      {
 
+/*
         var textoCelda3 = document.createTextNode("Accionador B");
      celda.appendChild(textoCelda3);
 
+     var dev = document.createElement("div")
+        dev.setAttribute("id","secondTenthsExample")
+        var dav=document.createElement("div");
+        dav.setAttribute("class","values");
+        dev.appendChild(dav)
+        celda.appendChild(dev);
+
+*/
+
+
+  
+    var pe=document.createElement("div");
+     pe.setAttribute("id","demo"+respuesta[item].id);
+     pe.setAttribute("float","rigth");
+
      
+     celda.appendChild(pe);
+     
+  
+
+
+  
+
+     
+  
 
      }
 
 
 if(i==5)
      {
+ var textoCelda2 = document.createTextNode("Accionador B");
+     celda.appendChild(textoCelda2);
+  
+     
 
-      
-     celda.appendChild(label2)
 
 
 
@@ -748,15 +993,35 @@ if(i==5)
 
 if(i==6)
      {
+celda.appendChild(label2)
+    
+     }
 
-      
-   var detalles = document.createElement("button");
+     if(i==7)
+     {
+
+
+    var pe=document.createElement("div");
+     pe.setAttribute("id","demo2"+respuesta[item].id);
+     pe.setAttribute("float","rigth");
+
+     
+     celda.appendChild(pe);
+     
+   
+
+     }
+     if(i==8)
+     {
+
+
+var detalles = document.createElement("button");
    detalles.setAttribute("class","button button1")
    detalles.setAttribute("id",item)
    detalles.setAttribute("onclick","abrir1(this.id)")
 
 
-   var textoCelda3 = document.createTextNode("Especificaciones");
+   var textoCelda3 = document.createTextNode("Detalles");
 detalles.appendChild(textoCelda3)
 
 
@@ -779,13 +1044,16 @@ detalles.appendChild(textoCelda3)
 
 
 
+
+
+
    var detalles = document.createElement("button");
    detalles.setAttribute("class","button button1")
    detalles.setAttribute("id",item)
-   detalles.setAttribute("onclick","abrir3(this.id)")
+   detalles.setAttribute("onclick","abrir1(this.id)")
 
 
-   var textoCelda3 = document.createTextNode("Programación");
+   var textoCelda3 = document.createTextNode("Imagen");
 detalles.appendChild(textoCelda3)
 
 
@@ -793,23 +1061,25 @@ detalles.appendChild(textoCelda3)
    celda.appendChild(detalles)
 
 
+
    var detalles = document.createElement("button");
    detalles.setAttribute("class","button button1")
    detalles.setAttribute("id",item)
-   detalles.setAttribute("onclick","abrir3(this.id)")
+   detalles.setAttribute("onclick","abrir1(this.id)")
 
 
-   var textoCelda3 = document.createTextNode("Editar");
+   var textoCelda3 = document.createTextNode("Historial");
 detalles.appendChild(textoCelda3)
 
 
 
    celda.appendChild(detalles)
+
+
 
 
 
      }
-
 
 
     }
@@ -1275,27 +1545,27 @@ function genera() {
 
 
 var alarmas=[];
-var text1 = document.createTextNode('Accionador');
-var text2 = document.createTextNode('Fecha/Hora');
+//var text1 = document.createTextNode('Accionador');
+var text2 = document.createTextNode('Evento de tiempo');
 var text3 = document.createTextNode('Acción');
 
 
-console.log(alarmas.length)
+
 
   // Obtener la referencia del elemento body
 var select = document.getElementById('ventana')
 
   // Crea un elemento <table> y un elemento <tbody>
   var table   = document.createElement("table");
-  table.setAttribute("class","table table-hover")
+  //table.setAttribute("class","table table-hover")
   table.setAttribute("id","table")
-  table.setAttribute("style","td.fit")
+ // table.setAttribute("style","td.fit")
 
 var head=document.createElement("thead");
 var column=document.createElement("tr");
-var celda1=document.createElement("th");
-celda1.appendChild(text1);
-celda1.setAttribute("data-field","accionador")
+//var celda1=document.createElement("th");
+//celda1.appendChild(text1);
+//celda1.setAttribute("data-field","accionador")
 var celda2=document.createElement("th");
 celda2.appendChild(text2);
 celda2.setAttribute("data-field","timer")
@@ -1303,7 +1573,7 @@ var celda3=document.createElement("th");
 celda3.appendChild(text3);
 celda3.setAttribute("data-field","accion")
 
-column.appendChild(celda1);
+//column.appendChild(celda1);
 column.appendChild(celda2);
 
 column.appendChild(celda3);
@@ -1363,7 +1633,7 @@ var select = document.getElementById('ventana')
   // Crea un elemento <table> y un elemento <tbody>
   var tabla   = document.createElement("table");
   tabla.setAttribute("id","sucesos")
-  tabla.setAttribute("class","table table-hover")
+  //tabla.setAttribute("class","table table-hover")
 
 
 
@@ -1436,6 +1706,7 @@ var select = document.getElementById('ventana')
 
   // Crea un elemento <table> y un elemento <tbody>
   var tabla   = document.createElement("table");
+  //tabla.setAttribute("class","table table-hover")
   tabla.setAttribute("id","tigre")
 
 
@@ -1450,12 +1721,21 @@ var row = header.insertRow(0);
 // Insert a new cell (<td>) at the first position of the "new" <tr> element:
 var cell = row.insertCell();
 var cell2 = row.insertCell();
+var cell3 = row.insertCell();
+var cell4 = row.insertCell()
 
-var testo = document.createTextNode('Accionador');
+var testo = document.createTextNode('Sensor');
 cell.appendChild(testo);
 
-var testo2 = document.createTextNode('Limite');
+var testo2 = document.createTextNode('Condición');
 cell2.appendChild(testo2);
+
+var testo3 = document.createTextNode('Valor');
+cell3.appendChild(testo3);
+
+var testo4 = document.createTextNode('Acción');
+cell4.appendChild(testo4);
+
 
 
 
@@ -1492,7 +1772,7 @@ cell2.appendChild(testo2);
 }
 
 
-
+var fechas=[];
            
 function insertar(readableDate) {
 
@@ -1503,9 +1783,10 @@ var table = document.getElementById("table");
 var row = table.insertRow();
 
 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-var cell1 = row.insertCell();
+//var cell1 = row.insertCell();
 var cell2 = row.insertCell();
 var cell3 = row.insertCell();
+
 
 
 
@@ -1520,7 +1801,7 @@ var cell3 = row.insertCell();
     <option value="audi">Audi</option>
   </select>
 */
-
+/*
 var selector=document.createElement("select");
 selector.setAttribute("id","cars");
 selector.setAttribute("name","cars");
@@ -1543,45 +1824,62 @@ option2.appendChild(B);
 
 selector.appendChild(option1);
 selector.appendChild(option2);
-
+*/
 
 
 
 var selector2=document.createElement("select");
-selector2.setAttribute("id","cars2");
+selector2.setAttribute("id",readableDate);
 selector2.setAttribute("name","cars2");
 
 
 var opt1=document.createElement("option");
-opt1.setAttribute("value","A");
+opt1.setAttribute("value","ON");
 var A1 = document.createTextNode("ON");
 opt1.appendChild(A1);
 
 
 
 var opt2=document.createElement("option");
-opt2.setAttribute("value","B")
+opt2.setAttribute("value","OFF")
 var B2 = document.createTextNode("OFF");
 opt2.appendChild(B2);
+
+var opt3=document.createElement("option");
+opt3.setAttribute("value","Borrar")
+var C3 = document.createTextNode("borrar");
+opt3.appendChild(C3);
+
 
 
 
 
 selector2.appendChild(opt1);
 selector2.appendChild(opt2);
+selector2.appendChild(opt3);
 
 
 
 
 
-
-cell1.setAttribute("width","10%")
+//cell1.setAttribute("width","10%")
 // Add some text to the new cells:
-cell1.appendChild(selector);
+//cell1.appendChild(selector);
 
-cell2.innerHTML = readableDate;
+cell2.innerHTML = readableDate.toString();
 cell3.appendChild(selector2);
 
+
+
+
+
+
+
+
+
+
+
+fechas.push(readableDate.toString());
 
 }
 
@@ -1597,6 +1895,8 @@ var row = table.insertRow();
 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 var cell1 = row.insertCell(0);
 var cell2 = row.insertCell(1);
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
 
 
 
@@ -1608,10 +1908,104 @@ spinner.setAttribute("data-decimals","2");
 spinner.setAttribute("min","-20");
 spinner.setAttribute("max","50");
 spinner.setAttribute("step","0.1");
-select.appendChild(spinner);
+//select.appendChild(spinner);
 // Add some text to the new cells:
-cell1.appendChild(spinner);
-cell1.appendChild(spinner);
+//cell1.appendChild(spinner);
+//cell2.appendChild(spinner);
+cell3.appendChild(spinner);
+
+var selector2=document.createElement("select");
+selector2.setAttribute("id","cars2");
+selector2.setAttribute("name","cars2");
+
+
+var opt1=document.createElement("option");
+opt1.setAttribute("value","A");
+var A1 = document.createTextNode("<");
+opt1.appendChild(A1);
+
+
+
+var opt2=document.createElement("option");
+opt2.setAttribute("value","B")
+var B2 = document.createTextNode(">");
+opt2.appendChild(B2);
+
+var opt3=document.createElement("option");
+opt3.setAttribute("value","B")
+var C3 = document.createTextNode("=");
+opt3.appendChild(C3);
+
+
+selector2.appendChild(opt1);
+selector2.appendChild(opt2);
+selector2.appendChild(opt3);
+
+cell2.appendChild(selector2);
+
+
+
+
+var sel=document.createElement("select");
+sel.setAttribute("id","cars2");
+sel.setAttribute("name","cars2");
+
+
+var opt1=document.createElement("option");
+opt1.setAttribute("value","A");
+var A1 = document.createTextNode("ON");
+opt1.appendChild(A1);
+
+
+
+var opt2=document.createElement("option");
+opt2.setAttribute("value","B")
+var B2 = document.createTextNode("OFF");
+opt2.appendChild(B2);
+
+var opt3=document.createElement("option");
+opt3.setAttribute("value","B")
+var C3 = document.createTextNode("Borrar");
+opt3.appendChild(C3);
+
+
+sel.appendChild(opt1);
+sel.appendChild(opt2);
+sel.appendChild(opt3);
+
+cell4.appendChild(sel);
+
+
+var sol=document.createElement("select");
+sol.setAttribute("id","cars2");
+sol.setAttribute("name","cars2");
+
+
+var opt1=document.createElement("option");
+opt1.setAttribute("value","A");
+var A1 = document.createTextNode("t°");
+opt1.appendChild(A1);
+
+
+
+var opt2=document.createElement("option");
+opt2.setAttribute("value","B")
+var B2 = document.createTextNode("-");
+opt2.appendChild(B2);
+
+var opt3=document.createElement("option");
+opt3.setAttribute("value","B")
+var C3 = document.createTextNode("-");
+opt3.appendChild(C3);
+
+
+sol.appendChild(opt1);
+sol.appendChild(opt2);
+sol.appendChild(opt3);
+
+cell1.appendChild(sol);
+
+
 
 }
 
@@ -2139,18 +2533,23 @@ while (select.firstChild) {
 
 var evento=document.createElement("input");
 evento.setAttribute("type","button");
-evento.setAttribute("value","Añadir Evento");
+evento.setAttribute("value","Añadir Evento de Tiempo");
 evento.setAttribute("onclick","simplepicker.open();")
 
 var trigger=document.createElement("input");
 
 
 trigger.setAttribute("type","button");
-trigger.setAttribute("value","Añadir Trigger");
+trigger.setAttribute("value","Añadir Evento de Sensor");
 trigger.setAttribute("onclick","insertar2();")
 
 
+var guardar=document.createElement("input");
 
+
+guardar.setAttribute("type","button");
+guardar.setAttribute("value","Guardar");
+guardar.setAttribute("onclick","obtener();")
 
 var dov= document.createElement("div");
 dov.setAttribute("id","eventos");
@@ -2175,6 +2574,7 @@ document.getElementById('ventana').appendChild(table);
 
 
 
+
 //genera_tabla();
 modal.style.display = "block";
 
@@ -2185,12 +2585,15 @@ genera_tabla();
 
 
 
-genera_tabla2()
+
 
 */
 genera();
+
 select.appendChild(evento)
+genera_tabla2()
 select.appendChild(trigger)
+select.appendChild(guardar)
 
 
 
@@ -2199,6 +2602,50 @@ select.appendChild(trigger)
 
 
 }
+
+
+function obtener()
+{
+
+var alarms=[];
+console.log("hola");
+//gets table
+var oTable = document.getElementById('table');
+
+
+//gets rows of table
+var rowLength = oTable.rows.length;
+ 
+
+//var oCells = oTable.rows.item(2).cells;
+
+
+//var cellLength = oCells.length;
+
+
+//var hola=oCells.item(0).textContent
+
+
+ //console.log(cellLength)
+//console.log(rowLength)
+ //console.log(hola);
+var o=0;
+for (var i = 2; i < rowLength; i++) {
+var oCells = oTable.rows.item(i).cells;
+alarms[o]=oCells.item(0).textContent
+o=o+1;
+}
+
+console.log(alarms[0])
+console.log(alarms[1])
+console.log(alarms[2])
+console.log(alarms[3])
+
+ getConfirmation()
+
+}
+
+
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -2225,9 +2672,73 @@ window.onclick = function(event) {
    <script src="js/bootstrap.js"></script>
 
 
+  
+
+   <script type = "text/javascript">
+         <!--
+
+
+var alarmas=[];
+
+            function getConfirmation() {
+              
+ for ( var item = 0; item < fechas.length; item++) {
+var select = document.getElementById(fechas[item]);
+var value = select.options[select.selectedIndex].value;
+
+var tiempo=select.id.substring(select.id.length-4,select.id.length)
+              
+              alarmas.push("2")
+              alert(alarmas[item]);
+
+              $.ajax({
+    url:'/timers',
+    method:'POST',
+    data: {Timer: alarmas[item]
+        
+         },
+
+    beforeSend: function(data){
+      console.log('Enviando...',data)
+    },
+  }).done(function(respuesta){
+
+    console.log('Respuesta recibida:',respuesta)
+    console.log(respuesta)
+
+}).fail(function(err){
+    console.log(err)
+    
+  }
+
+    )
+       }
 
 
 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       alarmas=[];
+       fechas=[];
+     }
+
+
+         //-->
+      </script>
 
 
 
