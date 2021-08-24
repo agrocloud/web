@@ -370,7 +370,7 @@ collection.find({}).toArray(function(err, docs) {
     console.log(docs)
 
      res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(docs));
+   res.json(docs);
 
 
 //res.send(docs)

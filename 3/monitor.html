@@ -240,11 +240,12 @@ var div = document.getElementById('eventos');
 insertar(readableDate);
 
 
+
+
    console.log(readableDate)
 
 
     });
-
 
     simplepicker.on('close', (date) => {
       //$eventLog.innerHTML += 'Picker Closed'  + '\n';
@@ -709,11 +710,11 @@ while (select.firstChild) {
 var textnode = document.createTextNode("Programar");
    var select = document.getElementById("demo"+respuesta[item].id);
 
-
+var ido=respuesta[item].id;
 
    var detalles = document.createElement("button");
    detalles.setAttribute("class","")
-   detalles.setAttribute("id",item)
+   detalles.setAttribute("id",respuesta[item].id)
    detalles.setAttribute("onclick","abrir3(this.id)")
 
 
@@ -738,7 +739,7 @@ var textnode = document.createTextNode("Programar");
 
    var detalles2 = document.createElement("button");
    detalles2.setAttribute("class","")
-   detalles2.setAttribute("id",item)
+   detalles2.setAttribute("id",respuesta[item].id)
    detalles2.setAttribute("onclick","abrir3(this.id)")
 
 
@@ -1127,11 +1128,7 @@ detalles.appendChild(textoCelda3)
 });
 
 
-
-
-
-
-
+/*
 function comu(canales,numero)
 {
 const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
@@ -1195,13 +1192,13 @@ gauges[item] = new RadialGauge({ renderTo: item.toString() ,width: 420,
 
         }
 
-
+*/
 /*
 nodo2 = new RadialGauge({ renderTo: "1" ,width: 400,
     height: 400, id:item}).draw()
 */
 
-
+/*
 client.on('message', (topic, message, packet) => {
   //console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
   
@@ -1227,13 +1224,7 @@ for ( var item = 0; item < numero ; item++) {
 
 
 }
-
-</script>
-
-<script>
-
-
-
+*/
 
 function doalert(checkboxElem,canales,numero) {
 
@@ -1330,9 +1321,10 @@ mySubString=strong+"control";
     
   }
 }
-
 </script>
 
+
+<script src="/mqtt.js"></script>
 
 
 
@@ -1868,17 +1860,6 @@ selector2.appendChild(opt3);
 
 cell2.innerHTML = readableDate.toString();
 cell3.appendChild(selector2);
-
-
-
-
-
-
-
-
-
-
-
 fechas.push(readableDate.toString());
 
 }
@@ -2523,6 +2504,7 @@ console.log(lecturas)
 function abrir3(id)
 {
 
+
 var select = document.getElementById('ventana');
 
 
@@ -2549,7 +2531,8 @@ var guardar=document.createElement("input");
 
 guardar.setAttribute("type","button");
 guardar.setAttribute("value","Guardar");
-guardar.setAttribute("onclick","obtener();")
+guardar.setAttribute("onclick","obtener(this.id);")
+guardar.setAttribute("id",id);
 
 var dov= document.createElement("div");
 dov.setAttribute("id","eventos");
@@ -2595,20 +2578,14 @@ genera_tabla2()
 select.appendChild(trigger)
 select.appendChild(guardar)
 
-
-
-
-
-
-
 }
 
 
-function obtener()
+function obtener(id)
 {
-
+var ode=id;
 var alarms=[];
-console.log("hola");
+//console.log("hola");
 //gets table
 var oTable = document.getElementById('table');
 
@@ -2643,6 +2620,63 @@ console.log(alarms[3])
 
  getConfirmation()
 
+
+
+
+
+const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+
+
+const host = 'ws://192.168.43.42:9001'
+
+const options = {
+  keepalive: 60,
+  clientId: clientId,
+  protocolId: 'MQTT',
+  protocolVersion: 4,
+  clean: true,
+  reconnectPeriod: 1000,
+  connectTimeout: 30 * 1000,
+  will: {
+    topic: 'WillMsg',
+    payload: 'Connection Closed abnormally..!',
+    qos: 0,
+    retain: false
+  },
+}
+
+
+console.log('Connecting mqtt client')
+const client = mqtt.connect(host, options)
+
+client.on('error', (err) => {
+  console.log('Connection error: ', err)
+  //client.end()
+})
+
+client.on('reconnect', () => {
+  console.log('Reconnecting...')
+})
+
+
+
+client.on('connect', () => {
+  console.log('Client connected:' + clientId)
+  // Subscribe
+
+  
+})
+
+
+client.on('message', (topic, message, packet) => {
+  //console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+  
+
+})
+
+client.publish(ode+"control","reset")
+
+  
 }
 
 
@@ -2680,21 +2714,21 @@ window.onclick = function(event) {
 
 var alarmas=[];
 
+
             function getConfirmation() {
               
  for ( var item = 0; item < fechas.length; item++) {
 var select = document.getElementById(fechas[item]);
 var value = select.options[select.selectedIndex].value;
 
-var tiempo=select.id.substring(select.id.length-4,select.id.length)
-              
-              alarmas.push("2")
-              alert(alarmas[item]);
 
+              
+              alarmas.push(select.id.substring(select.id.length-7,select.id.length))
+              alert(alarmas[item]);
               $.ajax({
     url:'/timers',
     method:'POST',
-    data: {Timer: alarmas[item]
+    data: {Timer: alarmas[item] ,Action :value
         
          },
 
